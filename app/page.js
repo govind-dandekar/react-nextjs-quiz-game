@@ -3,7 +3,7 @@ import Image from "next/image";
 function Home() {
   return (
     // global container
-    <body className="flex items-center justify-center min-h-screen bg-cyan-50">
+    <div className="flex items-center justify-center min-h-screen bg-cyan-50">
       {/* card container */}
       <div className="bg-cyan-400 m-3 shadow-2xl rounded-2xl px-60 pb-40 pt-20">
         {/* image container */}
@@ -27,7 +27,7 @@ function Home() {
           </button>
         </div>
       </div>
-    </body>
+    </div>
   );
 }
 
