@@ -13,9 +13,9 @@ function HomePage() {
       <div className="bg-cyan-400 m-3 shadow-2xl rounded-2xl px-60 pb-40 pt-20 text-white text-center">
         <div className="flex justify-center hover:scale-110 transition delay-100 duration-300">
           <Image
-            src="/bluey.png"
-            width={64}
-            height={100}
+            src="/bluey-bingo.png"
+            width={128}
+            height={200}
             alt="bluey character"
           />
         </div>
