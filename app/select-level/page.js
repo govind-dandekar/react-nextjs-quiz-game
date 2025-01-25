@@ -10,7 +10,7 @@ import { FaHome } from "react-icons/fa";
 import SelectLevelButton from "../../components/select-level/select-level-button";
 import StartQuizButton from "../../components/select-level/start-quiz-button";
 
-function LevelPage() {
+function SelectLevelPage() {
   const [selectedLevel, setSelectedLevel] = useState("none");
 
   function levelSelectHandler(levelName) {
@@ -63,4 +63,4 @@ function LevelPage() {
   );
 }
 
-export default LevelPage;
+export default SelectLevelPage;
