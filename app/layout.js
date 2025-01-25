@@ -16,10 +16,9 @@ function RootLayout({ children }) {
   return (
     <html lang="en" className={chewy.className}>
       <body>
+        {/* global container */}
         <div className="flex items-center justify-center min-h-screen bg-cyan-50">
-          <div className="bg-cyan-400 m-3 shadow-2xl rounded-2xl px-60 pb-40 pt-20">
-            {children}
-          </div>
+          {children}
         </div>
       </body>
     </html>
