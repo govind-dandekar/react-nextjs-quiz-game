@@ -61,6 +61,7 @@ function SelectLevelPage() {
         </div>
       </div>
       {/* TODO: generalize footer */}
+      {/* TODO: add back link icon */}
       <div className="flex text-white bg-cyan-400 m-3 py-3 px-3 mt-10 rounded-2xl font-sans justify-evenly align-middle">
         <p>for non-commercial entertainment purposes only</p>
         <span className="mt-1">
