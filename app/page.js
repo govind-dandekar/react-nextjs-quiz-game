@@ -6,9 +6,9 @@ import { redirect } from "next/navigation";
 
 function HomePage() {
   return (
-    //TODO: randomize image display -- move to component?
-    //TODO: generalized scale transition and duration with template string
-    //TODO: declare width and height of container with min-w min-h?
+    // TODO: declare width and height of container with min-w min-h?
+    // TODO: setup error and not found templates
+    // TODO: try bg-gradient
     <>
       <div className="bg-cyan-400 m-3 shadow-2xl rounded-2xl px-60 pb-40 pt-20 text-white text-center">
         <div className="flex justify-center hover:scale-110 transition delay-100 duration-300">
@@ -16,7 +16,7 @@ function HomePage() {
             src="/bluey-bingo.png"
             width={128}
             height={200}
-            alt="bluey character"
+            alt="bluey and bingo"
           />
         </div>
         <div className="text-6xl space-y-4 text-nowrap mt-8 hover:scale-110 transition delay-100 duration-300">
