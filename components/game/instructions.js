@@ -12,7 +12,7 @@ function Instructions() {
           alt="bluey family with play car"
         />
       </div>
-      <div className="text-4xl text-nowrap mt-8">
+      <div className="text-4xl mt-8">
         <p>Instructions:</p>
         <div className="text-4xl space-y-4 mt-4">
           <p>There are ten multiple choice questions!</p>

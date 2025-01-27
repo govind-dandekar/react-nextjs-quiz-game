@@ -8,11 +8,16 @@ import CustomFooter from "@/components/custom-footer";
 
 function HomePage() {
   return (
-    // TODO: declare width and height of container with min-w min-h?
+    // TODO: results page with play again button
+    // TODO: color code correct vs incorrect when submitted
+    // TODO: add footer to layout
+    // TODO: add bluey theme song as audio file
+    // TODO: restart game modal for quiz section
     // TODO: setup error and not found templates
-    // TODO: try bg-gradient
+    // TODO: ensure correct answer index is randomized
+    // TODO: general refactor of CSS and components
     <>
-      <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-2/3 h-[40rem] text-white text-center items-center justify-center">
+      <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
         <div className="flex justify-center hover:scale-110 transition delay-100 duration-300">
           <Image
             src="/bluey-bingo.png"

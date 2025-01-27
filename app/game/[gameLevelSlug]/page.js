@@ -39,7 +39,7 @@ function PlayGame({ params }) {
   if (gameState === "instructions") {
     return (
       <>
-        <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-2/3 h-[40rem] text-white text-center items-center justify-center">
+        <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
           <Instructions />
           <div className="mt-12 text-3xl">
             <form action={formAction}>
@@ -63,7 +63,7 @@ function PlayGame({ params }) {
     //adjust min and max widths -- make fixed width question and answer card
     return (
       <>
-        <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-2/3 h-[40rem] text-white text-center items-center justify-center">
+        <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
           <p className="text-4xl">Question {displayIndex} of 10</p>
           <h1 className="text-5xl mt-6">{displayQuestion}</h1>
           <AnswerGrid answers={answers} onSubmit={handleAnswerSubmit} />

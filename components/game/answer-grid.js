@@ -19,7 +19,7 @@ function AnswerGrid({ answers, onSubmit }) {
               onClick={() => handleAnswerSelect(index)}
               key={answer.text}
               className="bg-cyan-600 rounded-xl py-3 px-2 mt-3 mx-3 hover:bg-cyan-800 focus:bg-cyan-800
-						focus:outline-4 focus:outline-offset-2 focus:outline-dotted text-3xl"
+						focus:outline-4 focus:outline-offset-2 focus:outline-dotted text-3xl truncate"
             >
               {answer.text}
             </button>

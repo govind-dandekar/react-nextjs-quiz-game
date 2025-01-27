@@ -20,7 +20,7 @@ function SelectLevelPage() {
 
   return (
     <>
-      <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-2/3 h-[40rem] text-white text-center items-center justify-center">
+      <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
         {/* image container */}
         <div className="flex justify-center hover:scale-110 transition delay-100 duration-300">
           <Image
