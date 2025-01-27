@@ -4,13 +4,15 @@ import Image from "next/image";
 
 import { redirect } from "next/navigation";
 
+import CustomFooter from "@/components/custom-footer";
+
 function HomePage() {
   return (
     // TODO: declare width and height of container with min-w min-h?
     // TODO: setup error and not found templates
     // TODO: try bg-gradient
     <>
-      <div className="bg-cyan-400 m-3 shadow-2xl rounded-2xl px-60 pb-40 pt-20 text-white text-center">
+      <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-2/3 h-[40rem] text-white text-center items-center justify-center">
         <div className="flex justify-center hover:scale-110 transition delay-100 duration-300">
           <Image
             src="/bluey-bingo.png"
@@ -34,6 +36,7 @@ function HomePage() {
           </button>
         </div>
       </div>
+      <CustomFooter />
     </>
   );
 }

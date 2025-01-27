@@ -8,6 +8,7 @@ import Image from "next/image";
 import { getQuestions } from "@/lib/actions";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
+import CustomFooter from "../../../components/custom-footer";
 
 function PlayGame({ params }) {
   // TODO: if selected level is not one of the options redirect
@@ -37,16 +38,19 @@ function PlayGame({ params }) {
 
   if (gameState === "instructions") {
     return (
-      <div className="bg-cyan-400 m-3 shadow-2xl rounded-2xl px-40 pb-40 pt-20 text-white text-center">
-        <Instructions />
-        <div className="mt-12 text-3xl">
-          <form action={formAction}>
-            <button className="bg-cyan-800 py-3 px-8 rounded-2xl hover:bg-cyan-900 hover:scale-110 transition delay-100 duration-300">
-              Start Quiz!
-            </button>
-          </form>
+      <>
+        <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-2/3 h-[40rem] text-white text-center items-center justify-center">
+          <Instructions />
+          <div className="mt-12 text-3xl">
+            <form action={formAction}>
+              <button className="bg-cyan-800 py-3 px-8 rounded-2xl hover:bg-cyan-900 hover:scale-110 transition delay-100 duration-300">
+                Start Quiz!
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+        <CustomFooter />
+      </>
     );
   }
 
@@ -56,14 +60,16 @@ function PlayGame({ params }) {
     // array of objects: answers and t/f flag
     const answers = claudeQuestions[questionIndex].answers;
 
+    //adjust min and max widths -- make fixed width question and answer card
     return (
-      <div className="bg-cyan-400 m-3 text-3xl shadow-2xl rounded-2xl px-40 pb-40 pt-20 text-white text-center">
-        <p>Question {displayIndex} of 10</p>
-        <h1 className="text-5xl mt-3 ">{displayQuestion}</h1>
-        <div className="mt-4">
-          <AnswerGrid answers={answers} />
+      <>
+        <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-2/3 h-[40rem] text-white text-center items-center justify-center">
+          <p className="text-4xl">Question {displayIndex} of 10</p>
+          <h1 className="text-5xl mt-6">{displayQuestion}</h1>
+          <AnswerGrid answers={answers} onSubmit={handleAnswerSubmit} />
         </div>
-      </div>
+        <CustomFooter />
+      </>
     );
   }
 }

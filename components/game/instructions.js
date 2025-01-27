@@ -16,7 +16,7 @@ function Instructions() {
         <p>Instructions:</p>
         <div className="text-4xl space-y-4 mt-4">
           <p>There are ten multiple choice questions!</p>
-          <p>Select the answer you think is correct and then click "Submit!"</p>
+          <p>Select the correct answer and then click "Submit!"</p>
           <p>Good luck & have fun!</p>
         </div>
       </div>

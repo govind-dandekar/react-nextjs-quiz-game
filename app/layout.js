@@ -1,3 +1,5 @@
+import CustomFooter from "@/components/custom-footer";
+
 import { Chewy } from "next/font/google";
 
 import "./globals.css";
@@ -17,7 +19,7 @@ function RootLayout({ children }) {
     <html lang="en" className={chewy.className}>
       <body>
         {/* global container */}
-        <div className="flex items-center justify-center min-h-screen bg-cyan-50">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-cyan-50">
           {children}
         </div>
       </body>

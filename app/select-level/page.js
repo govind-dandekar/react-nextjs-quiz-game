@@ -9,6 +9,7 @@ import { FaHome } from "react-icons/fa";
 
 import SelectLevelButton from "../../components/select-level/select-level-button";
 import StartQuizButton from "../../components/select-level/start-quiz-button";
+import CustomFooter from "../../components/custom-footer";
 
 function SelectLevelPage() {
   const [selectedLevel, setSelectedLevel] = useState("none");
@@ -18,8 +19,8 @@ function SelectLevelPage() {
   }
 
   return (
-    <div>
-      <div className="bg-cyan-400 m-3 shadow-2xl rounded-2xl px-60 pb-20 pt-20 text-white">
+    <>
+      <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-2/3 h-[40rem] text-white text-center items-center justify-center">
         {/* image container */}
         <div className="flex justify-center hover:scale-110 transition delay-100 duration-300">
           <Image
@@ -35,6 +36,7 @@ function SelectLevelPage() {
         </div>
         <div className="flex space-x-4 mt-12">
           {/* set as array.map? */}
+          {/* update with tailwind focus */}
           <SelectLevelButton
             buttonText="Easy"
             selectedLevel={selectedLevel}
@@ -60,17 +62,9 @@ function SelectLevelPage() {
           </StartQuizButton>
         </div>
       </div>
-      {/* TODO: generalize footer */}
       {/* TODO: add back link icon */}
-      <div className="flex text-white bg-cyan-400 m-3 py-3 px-3 mt-10 rounded-2xl font-sans justify-evenly align-middle">
-        <p>for non-commercial entertainment purposes only</p>
-        <span className="mt-1">
-          <Link href="/">
-            <FaHome className="scale-150" />
-          </Link>
-        </span>
-      </div>
-    </div>
+      <CustomFooter />
+    </>
   );
 }
 
