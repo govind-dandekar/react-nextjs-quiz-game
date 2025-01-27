@@ -4,6 +4,7 @@ import * as React from "react";
 import { useEffect, useState, useActionState } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import { getQuestions } from "@/lib/actions";
 import Instructions from "../../../components/game/instructions";
@@ -14,29 +15,39 @@ function PlayGame({ params }) {
   // TODO: if selected level is not one of the options redirect
   const { selectedLevel } = React.use(params);
 
-  // managed flow of game in PlayGame
-  const [gameState, setGameState] = useState("instructions");
-  const [questionIndex, setQuestionIndex] = useState(0);
+  // manage flow of game in PlayGame
+  const [gameMode, setGameMode] = useState("instructions");
+  // set as 9 for results testing purposes; revert to 0
+  const [questionIndex, setQuestionIndex] = useState(9);
+  // track correct answers for results summary
+  const [correctAnswerCounter, setCorrectAnswerCounter] = useState(0);
 
   // useActionState to retrieve data from server
-  const [claudeQuestions, formAction, pending] = useActionState(
-    getQuestions,
-    []
-  );
+  const [quizQuestions, formAction, pending] = useActionState(getQuestions, []);
 
   useEffect(() => {
-    if (claudeQuestions.length === 0) {
+    if (quizQuestions.length === 0) {
       return;
     } else {
-      setGameState("playQuiz");
+      setGameMode("playQuiz");
     }
-  }, [claudeQuestions]);
+  }, [quizQuestions]);
 
-  function handleAnswerSubmit() {
+  function handleAnswerSubmit(answerFlag) {
+    // increment counter if answer is correct
+    if (answerFlag) {
+      setCorrectAnswerCounter((prevCounter) => prevCounter + 1);
+    }
+
+    // end quiz if questions are complete
+    if (questionIndex === 9) {
+      setGameMode("results");
+      return;
+    }
     setQuestionIndex((prevIndex) => prevIndex + 1);
   }
 
-  if (gameState === "instructions") {
+  if (gameMode === "instructions") {
     return (
       <>
         <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
@@ -54,11 +65,11 @@ function PlayGame({ params }) {
     );
   }
 
-  if (gameState === "playQuiz") {
+  if (gameMode === "playQuiz") {
     const displayIndex = questionIndex + 1;
-    const displayQuestion = claudeQuestions[questionIndex].question;
+    const displayQuestion = quizQuestions[questionIndex].question;
     // array of objects: answers and t/f flag
-    const answers = claudeQuestions[questionIndex].answers;
+    const answers = quizQuestions[questionIndex].answers;
 
     //adjust min and max widths -- make fixed width question and answer card
     return (
@@ -66,7 +77,30 @@ function PlayGame({ params }) {
         <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
           <p className="text-4xl">Question {displayIndex} of 10</p>
           <h1 className="text-5xl mt-6">{displayQuestion}</h1>
-          <AnswerGrid answers={answers} onSubmit={handleAnswerSubmit} />
+          <AnswerGrid answers={answers} onSubmitAnswer={handleAnswerSubmit} />
+        </div>
+        <CustomFooter />
+      </>
+    );
+  }
+
+  if (gameMode === "results") {
+    return (
+      <>
+        <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
+          <Image
+            src="/bluey-bingo-car.png"
+            width={160}
+            height={120}
+            alt="bluey and bingo playing with a toy car"
+          />
+          <p className="text-5xl mt-8">
+            Correct Answers: {correctAnswerCounter} out of 10!
+          </p>
+          <p className="text-5xl mt-6">Great Work!</p>
+          <button className="mt-8 text-3xl bg-cyan-800 py-3 px-8 rounded-2xl hover:bg-cyan-900 hover:scale-110 transition delay-100 duration-300">
+            <Link href="/select-level">Play Again!</Link>
+          </button>
         </div>
         <CustomFooter />
       </>
