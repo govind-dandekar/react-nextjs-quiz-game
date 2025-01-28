@@ -9,7 +9,7 @@ import CustomFooter from "@/components/custom-footer";
 function HomePage() {
   return (
     // DONE: results page with play again button
-    // TODO: color code correct vs incorrect when submitted; correct vs incorrect messaging on page before redirect?
+    // DONE: color code correct vs incorrect when submitted; correct vs incorrect messaging on page before redirect?
     // TODO: create ui folder; generalize button component; add footer to ui
     // TODO: add footer to layout
     // TODO: add bluey theme song as audio file

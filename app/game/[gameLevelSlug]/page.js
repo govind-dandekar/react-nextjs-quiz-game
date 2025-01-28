@@ -6,14 +6,14 @@ import { useEffect, useState, useActionState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { getQuestions } from "@/lib/actions";
+import { getQuestionsAnthropic, getQuestionsDummy } from "@/lib/actions";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
 import CustomFooter from "../../../components/custom-footer";
 
 function PlayGame({ params }) {
   // TODO: if selected level is not one of the options redirect
-  const { selectedLevel } = React.use(params);
+  const { gameLevelSlug } = React.use(params);
 
   // manage flow of game in PlayGame
   const [gameMode, setGameMode] = useState("instructions");
@@ -23,7 +23,10 @@ function PlayGame({ params }) {
   const [correctAnswerCounter, setCorrectAnswerCounter] = useState(0);
 
   // useActionState to retrieve data from server
-  const [quizQuestions, formAction, pending] = useActionState(getQuestions, []);
+  const [quizQuestions, formAction, pending] = useActionState(
+    getQuestionsDummy.bind(null, gameLevelSlug),
+    []
+  );
 
   useEffect(() => {
     if (quizQuestions.length === 0) {
@@ -35,7 +38,10 @@ function PlayGame({ params }) {
 
   function handleAnswerSubmit(answerFlag) {
     // manage ui updates based on correct vs incorrect answer
-    // increment counter if answer is correct
+    // increment counter if answer is correct - BUG: COUNTING ALL ANSWERS?
+    console.log("correctAnswerCounter: ");
+    console.log(correctAnswerCounter);
+
     if (answerFlag) {
       setCorrectAnswerCounter((prevCounter) => prevCounter + 1);
     }

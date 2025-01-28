@@ -1,0 +1,127 @@
+Here's how you can convert an Anthropic SDK ContentBlock response into JSON using TypeScript:
+
+```typescript
+import { ContentBlock } from '@anthropic-ai/sdk';
+
+// Function to convert ContentBlock to a plain object
+function contentBlockToJson(block: ContentBlock): any {
+  return {
+    type: block.type,
+    text: block.text,
+    // Add any other properties you need from the ContentBlock
+  };
+}
+
+// Example usage
+const handleResponse = (response: ContentBlock) => {
+  // Convert single ContentBlock to JSON
+  const jsonData = JSON.stringify(contentBlockToJson(response));
+  console.log(jsonData);
+};
+
+// For an array of ContentBlocks
+const handleMultipleBlocks = (blocks: ContentBlock[]) => {
+  // Convert array of ContentBlocks to JSON
+  const jsonData = JSON.stringify(blocks.map(block => contentBlockToJson(block)));
+  console.log(jsonData);
+};
+```
+
+Alternative approach using a type assertion:
+
+```typescript
+import { ContentBlock } from '@anthropic-ai/sdk';
+
+// Convert ContentBlock to a plain object using type assertion
+const contentBlockToJson = (block: ContentBlock) => {
+  return {
+    ...block,
+  } as Record<string, any>;
+};
+
+// Example usage with error handling
+try {
+  const handleResponse = (response: ContentBlock) => {
+    const jsonData = JSON.stringify(contentBlockToJson(response));
+    return jsonData;
+  };
+} catch (error) {
+  console.error('Error converting ContentBlock to JSON:', error);
+}
+```
+
+If you're working with the newer Message format:
+
+```typescript
+import { Message } from '@anthropic-ai/sdk';
+
+// Convert Message content to JSON
+function messageContentToJson(message: Message) {
+  return {
+    id: message.id,
+    content: message.content,
+    role: message.role,
+    // Add other message properties as needed
+  };
+}
+
+// Example usage
+const handleMessage = (message: Message) => {
+  const jsonData = JSON.stringify(messageContentToJson(message));
+  console.log(jsonData);
+};
+```
+
+Remember to handle potential errors and validate the data structure:
+
+```typescript
+import { ContentBlock, Message } from '@anthropic-ai/sdk';
+
+interface JsonResponse {
+  type: string;
+  text: string;
+  // Add other properties as needed
+}
+
+function convertToJson(response: ContentBlock | Message): JsonResponse {
+  try {
+    if ('type' in response) {
+      // Handle ContentBlock
+      return {
+        type: response.type,
+        text: response.text
+      };
+    } else {
+      // Handle Message
+      return {
+        type: 'message',
+        text: JSON.stringify(response.content)
+      };
+    }
+  } catch (error) {
+    console.error('Error converting to JSON:', error);
+    throw error;
+  }
+}
+
+// Usage with type checking
+const processResponse = (response: ContentBlock | Message) => {
+  try {
+    const jsonData = convertToJson(response);
+    const stringified = JSON.stringify(jsonData);
+    return stringified;
+  } catch (error) {
+    console.error('Processing error:', error);
+    return null;
+  }
+};
+```
+
+This code provides type safety and error handling while converting the response to JSON. Remember to adjust the properties based on what you need from the ContentBlock or Message object.
+
+Notes:
+1. Make sure you have the proper types imported from the Anthropic SDK
+2. Handle potential undefined or null values
+3. Consider adding validation for the response structure
+4. Use try-catch blocks for error handling
+5. Adjust the interface according to your specific needs
