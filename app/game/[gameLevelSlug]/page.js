@@ -38,7 +38,6 @@ function PlayGame({ params }) {
 
   function handleAnswerSubmit(answerFlag) {
     // manage ui updates based on correct vs incorrect answer
-    // increment counter if answer is correct - BUG: COUNTING ALL ANSWERS?
     console.log("correctAnswerCounter: ");
     console.log(correctAnswerCounter);
 
@@ -52,7 +51,6 @@ function PlayGame({ params }) {
       return;
     }
 
-    // setTimout so there's a short delay and display correct vs incorrect?
     setQuestionIndex((prevIndex) => prevIndex + 1);
   }
 

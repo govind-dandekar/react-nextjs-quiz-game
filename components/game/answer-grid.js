@@ -24,14 +24,13 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
     setAnswerSubmitted(true);
 
     setTimeout(() => {
-      // unclear why these needs to be here; component should re-render and set state to false but keeping for now
+      onSubmitAnswer(selectedAnswer.flag);
+      // reset component state after answer is submitted
       setAnswerSubmitted(false);
       setSelectedAnswer({
         index: "none",
         flag: false,
       });
-
-      onSubmitAnswer(selectedAnswer.index, selectedAnswer.flag);
     }, 1500);
   }
 
