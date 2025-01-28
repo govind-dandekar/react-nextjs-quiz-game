@@ -61,6 +61,7 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
       </div>
       <button
         // disable if no answer picked
+        disabled={selectedAnswer.index === "none"}
         onClick={handleAnswerSubmit}
         className="bg-cyan-500 rounded-xl py-2 px-4 mt-8 mx-3 hover:bg-cyan-800 hover:scale-110 transition duration-300 text-3xl"
       >
