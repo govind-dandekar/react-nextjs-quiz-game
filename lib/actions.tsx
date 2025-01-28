@@ -1,7 +1,7 @@
 "use server";
 
 import Anthropic from "@anthropic-ai/sdk";
-// @ts-expect-error
+// @ts-expect-error/sdk-issue
 import { ContentBlock } from "@anthropic-ai/sdk/resources";
 
 import { DUMMY_QUESTIONS_EASY, DUMMY_QUESTIONS_MEDIUM, DUMMY_QUESTIONS_HARD } from "./dummy-questions";
@@ -31,7 +31,7 @@ export async function getQuestionsAnthropic(level: string) {
     ]
   });
 
-   // @typescript-eslint/no-explicit-any
+  /* eslint-disable @typescript-eslint/no-explicit-any */
   function contentBlockToJson(block: ContentBlock): any {
     return {
       type: block.type,
@@ -41,7 +41,7 @@ export async function getQuestionsAnthropic(level: string) {
   
   // parsing calls from Claude API and Pro
   // For an array of ContentBlocks
-  // @typescript-eslint/no-explicit-any
+  //* eslint-disable @typescript-eslint/no-explicit-any */
   const handleMultipleBlocks = (blocks: ContentBlock[]): any => {
     // Convert array of ContentBlocks to JSON
     const jsonData = JSON.stringify(blocks.map(block => contentBlockToJson(block)));
@@ -71,7 +71,7 @@ export async function getQuestionsAnthropic(level: string) {
 
   return handleMultipleBlocks(msg.content)
 }
-// @typescript-eslint/no-explicit-any
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export async function getQuestionsDummy(level: string): Promise<any>{
   if (level === 'easy'){
     return DUMMY_QUESTIONS_EASY
