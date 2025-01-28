@@ -9,7 +9,7 @@ import Link from "next/link";
 import { getQuestionsDummy } from "@/lib/actions";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
-import CustomFooter from "../../../components/custom-footer";
+import CustomFooter from "@/components/custom-footer";
 
 function PlayGame({ params }) {
   // TODO: if selected level is not one of the options redirect

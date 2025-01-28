@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { redirect } from "next/navigation";
 
-import CustomFooter from "@/components/custom-footer";
+import CustomFooter from "../components/custom-footer";
 
 function HomePage() {
   return (
