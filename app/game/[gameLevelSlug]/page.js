@@ -18,7 +18,7 @@ function PlayGame({ params }) {
   // manage flow of game in PlayGame
   const [gameMode, setGameMode] = useState("instructions");
   // set as 9 for results testing purposes; revert to 0
-  const [questionIndex, setQuestionIndex] = useState(9);
+  const [questionIndex, setQuestionIndex] = useState(0);
   // track correct answers for results summary
   const [correctAnswerCounter, setCorrectAnswerCounter] = useState(0);
 
@@ -34,6 +34,7 @@ function PlayGame({ params }) {
   }, [quizQuestions]);
 
   function handleAnswerSubmit(answerFlag) {
+    // manage ui updates based on correct vs incorrect answer
     // increment counter if answer is correct
     if (answerFlag) {
       setCorrectAnswerCounter((prevCounter) => prevCounter + 1);
@@ -44,6 +45,8 @@ function PlayGame({ params }) {
       setGameMode("results");
       return;
     }
+
+    // setTimout so there's a short delay and display correct vs incorrect?
     setQuestionIndex((prevIndex) => prevIndex + 1);
   }
 
