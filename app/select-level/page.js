@@ -2,10 +2,7 @@
 
 import { useState } from "react";
 
-import Link from "next/link";
 import Image from "next/image";
-
-import { FaHome } from "react-icons/fa";
 
 import SelectLevelButton from "../../components/select-level/select-level-button";
 import StartQuizButton from "../../components/select-level/start-quiz-button";

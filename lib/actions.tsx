@@ -1,7 +1,7 @@
 "use server";
 
 import Anthropic from "@anthropic-ai/sdk";
-// @ts-ignore: 
+// @ts-expect-error
 import { ContentBlock } from "@anthropic-ai/sdk/resources";
 
 import { DUMMY_QUESTIONS_EASY, DUMMY_QUESTIONS_MEDIUM, DUMMY_QUESTIONS_HARD } from "./dummy-questions";
@@ -31,16 +31,17 @@ export async function getQuestionsAnthropic(level: string) {
     ]
   });
 
+   // @typescript-eslint/no-explicit-any
   function contentBlockToJson(block: ContentBlock): any {
     return {
       type: block.type,
-      // @ts-ignore: https://github.com/anthropics/anthropic-sdk-typescript/issues/432
       text: block.text,
     };
   }
   
   // parsing calls from Claude API and Pro
   // For an array of ContentBlocks
+  // @typescript-eslint/no-explicit-any
   const handleMultipleBlocks = (blocks: ContentBlock[]): any => {
     // Convert array of ContentBlocks to JSON
     const jsonData = JSON.stringify(blocks.map(block => contentBlockToJson(block)));
@@ -70,7 +71,7 @@ export async function getQuestionsAnthropic(level: string) {
 
   return handleMultipleBlocks(msg.content)
 }
-
+// @typescript-eslint/no-explicit-any
 export async function getQuestionsDummy(level: string): Promise<any>{
   if (level === 'easy'){
     return DUMMY_QUESTIONS_EASY

@@ -5,8 +5,8 @@ import { useEffect, useState, useActionState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-
-import { getQuestionsAnthropic, getQuestionsDummy } from "@/lib/actions";
+// import { getQuestionsAnthropic } from "@/lib/actions"
+import { getQuestionsDummy } from "@/lib/actions";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
 import CustomFooter from "../../../components/custom-footer";
@@ -23,7 +23,7 @@ function PlayGame({ params }) {
   const [correctAnswerCounter, setCorrectAnswerCounter] = useState(0);
 
   // useActionState to retrieve data from server
-  const [quizQuestions, formAction, pending] = useActionState(
+  const [quizQuestions, formAction] = useActionState(
     getQuestionsDummy.bind(null, gameLevelSlug),
     []
   );
