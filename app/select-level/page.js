@@ -3,9 +3,10 @@
 import { useState } from "react";
 
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
-import SelectLevelButton from "../../components/select-level/select-level-button";
-import StartQuizButton from "../../components/select-level/start-quiz-button";
+import SubmitButton from "@/components/ui/submit-button";
+import SelectButton from "@/components/ui/select-button";
 
 function SelectLevelPage() {
   const [selectedLevel, setSelectedLevel] = useState("none");
@@ -14,9 +15,13 @@ function SelectLevelPage() {
     setSelectedLevel(levelName);
   }
 
+  const linkText = "/game/" + selectedLevel.toLowerCase();
+
+  // available game levels
+  const levels = ["Easy", "Medium", "Hard"];
+
   return (
     <>
-      {/* image container */}
       <div className="flex justify-center hover:scale-110 transition delay-100 duration-300">
         <Image
           src="/bluey-bingo-sitting.png"
@@ -29,32 +34,26 @@ function SelectLevelPage() {
       <div className="text-6xl text-center mt-8">
         <p>Select Your Level!</p>
       </div>
-      <div className="flex space-x-4 mt-12">
-        {/* set as array.map? */}
-        <SelectLevelButton
-          buttonText="Easy"
-          selectedLevel={selectedLevel}
-          onSelect={levelSelectHandler}
-        />
-        <SelectLevelButton
-          buttonText="Medium"
-          selectedLevel={selectedLevel}
-          onSelect={levelSelectHandler}
-        />
-        <SelectLevelButton
-          buttonText="Hard"
-          selectedLevel={selectedLevel}
-          onSelect={levelSelectHandler}
-        />
+      <div className="flex space-x-4">
+        {levels.map((level) => {
+          return (
+            <SelectButton
+              key={level}
+              buttonText={level}
+              selectedLevel={selectedLevel}
+              onSelect={levelSelectHandler}
+            />
+          );
+        })}
       </div>
-      {/* confirm level and start game container */}
-      <div className="flex mt-12 justify-center">
-        <StartQuizButton buttonText={selectedLevel}>
-          {selectedLevel === "none"
-            ? "Pick a Level to Get Started!"
-            : `${selectedLevel} Quiz - Click Here!`}
-        </StartQuizButton>
-      </div>
+      <SubmitButton
+        disabled={selectedLevel === "none"}
+        onClick={() => redirect(linkText)}
+      >
+        {selectedLevel === "none"
+          ? "Pick a Level to Get Started!"
+          : `${selectedLevel} Quiz - Click Here!`}
+      </SubmitButton>
     </>
   );
 }
