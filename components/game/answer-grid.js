@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 
-import CorrectVsIncorrectAlert from "./correct-vs-incorrect-alert";
+import CorrectVSIncorrectAlert from "./correct-vs-incorrect-alert";
+import SubmitButton from "../ui/submit-button";
 
 // need to re-factor answer grid
 function AnswerGrid({ answers, onSubmitAnswer }) {
@@ -58,18 +59,17 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
           );
         })}
       </div>
-      <button
+      <SubmitButton
         disabled={selectedAnswer.index === "none" || answerSubmitted}
         onClick={handleAnswerSubmit}
-        className="bg-cyan-500 rounded-xl py-2 px-4 mt-8 mx-3 hover:bg-cyan-800 hover:scale-110 transition duration-300 text-3xl"
       >
         {!answerSubmitted &&
           (selectedAnswer.index === "none"
             ? "Pick an Answer!"
             : "Submit Answer!")}
         {answerSubmitted && "Submitted!"}
-      </button>
-      <CorrectVsIncorrectAlert
+      </SubmitButton>
+      <CorrectVSIncorrectAlert
         answerSubmitted={answerSubmitted}
         selectedAnswer={selectedAnswer}
       />
