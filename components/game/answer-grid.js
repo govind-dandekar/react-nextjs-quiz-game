@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Image from "next/image";
 
+// need to re-factor answer grid
 function AnswerGrid({ answers, onSubmitAnswer }) {
   const [selectedAnswer, setSelectedAnswer] = useState({
     index: "none",
@@ -19,8 +20,6 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
   }
 
   function handleAnswerSubmit() {
-    // will trigger re-render - should be able to update CSS and text for correct v incorrect messaging here
-    // update button text to "submitted"
     setAnswerSubmitted(true);
 
     setTimeout(() => {
@@ -31,7 +30,7 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
         index: "none",
         flag: false,
       });
-    }, 1500);
+    }, 1000);
   }
 
   let buttonCSS =
@@ -58,7 +57,6 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
         })}
       </div>
       <button
-        // disable if no answer picked OR if answer submitted
         disabled={selectedAnswer.index === "none" || answerSubmitted}
         onClick={handleAnswerSubmit}
         className="bg-cyan-500 rounded-xl py-2 px-4 mt-8 mx-3 hover:bg-cyan-800 hover:scale-110 transition duration-300 text-3xl"
@@ -69,7 +67,6 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
             : "Submit Answer!")}
         {answerSubmitted && "Submitted!"}
       </button>
-      {/* update CSS and include dynamic text upon submit -- need re-render to take effect?*/}
       <div
         className={
           !answerSubmitted

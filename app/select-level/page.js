@@ -42,7 +42,9 @@ function SelectLevelPage() {
               buttonText={level}
               selectedLevel={selectedLevel}
               onSelect={levelSelectHandler}
-            />
+            >
+              {level}
+            </SelectButton>
           );
         })}
       </div>
