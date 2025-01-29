@@ -53,17 +53,14 @@ function PlayGame({ params }) {
   if (gameMode === "instructions") {
     return (
       <>
-        <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
-          <Instructions />
-          <div className="mt-12 text-3xl">
-            <form action={formAction}>
-              <button className="bg-cyan-800 py-3 px-8 rounded-2xl hover:bg-cyan-900 hover:scale-110 transition delay-100 duration-300">
-                Start Quiz!
-              </button>
-            </form>
-          </div>
+        <Instructions />
+        <div className="mt-12 text-3xl">
+          <form action={formAction}>
+            <button className="bg-cyan-800 py-3 px-8 rounded-2xl hover:bg-cyan-900 hover:scale-110 transition delay-100 duration-300">
+              Start Quiz!
+            </button>
+          </form>
         </div>
-        <CustomFooter />
       </>
     );
   }
@@ -75,12 +72,9 @@ function PlayGame({ params }) {
 
     return (
       <>
-        <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
-          <p className="text-4xl">Question {displayIndex} of 10</p>
-          <h1 className="text-5xl mt-6">{displayQuestion}</h1>
-          <AnswerGrid answers={answers} onSubmitAnswer={handleAnswerSubmit} />
-        </div>
-        <CustomFooter />
+        <p className="text-4xl">Question {displayIndex} of 10</p>
+        <h1 className="text-5xl mt-6">{displayQuestion}</h1>
+        <AnswerGrid answers={answers} onSubmitAnswer={handleAnswerSubmit} />
       </>
     );
   }
@@ -88,22 +82,19 @@ function PlayGame({ params }) {
   if (gameMode === "results") {
     return (
       <>
-        <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
-          <Image
-            src="/bluey-bingo-car.png"
-            width={160}
-            height={120}
-            alt="bluey and bingo playing with a toy car"
-          />
-          <p className="text-5xl mt-8">
-            Correct Answers: {correctAnswerCounter} out of 10!
-          </p>
-          <p className="text-5xl mt-6">Great Work!</p>
-          <button className="mt-8 text-3xl bg-cyan-800 py-3 px-8 rounded-2xl hover:bg-cyan-900 hover:scale-110 transition delay-100 duration-300">
-            <Link href="/select-level">Play Again!</Link>
-          </button>
-        </div>
-        <CustomFooter />
+        <Image
+          src="/bluey-bingo-car.png"
+          width={160}
+          height={120}
+          alt="bluey and bingo playing with a toy car"
+        />
+        <p className="text-5xl mt-8">
+          Correct Answers: {correctAnswerCounter} out of 10!
+        </p>
+        <p className="text-5xl mt-6">Great Work!</p>
+        <button className="mt-8 text-3xl bg-cyan-800 py-3 px-8 rounded-2xl hover:bg-cyan-900 hover:scale-110 transition delay-100 duration-300">
+          <Link href="/select-level">Play Again!</Link>
+        </button>
       </>
     );
   }

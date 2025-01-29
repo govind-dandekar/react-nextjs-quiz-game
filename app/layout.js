@@ -1,6 +1,7 @@
 import { Chewy } from "next/font/google";
 
 import "./globals.css";
+import CustomFooter from "@/components/custom-footer";
 
 const chewy = Chewy({
   subsets: ["latin"],
@@ -17,7 +18,10 @@ function RootLayout({ children }) {
     <html lang="en" className={chewy.className}>
       <body>
         <div className="flex flex-col items-center justify-center min-h-screen bg-cyan-50">
-          {children}
+          <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
+            {children}
+          </div>
+          <CustomFooter />
         </div>
       </body>
     </html>
