@@ -35,13 +35,12 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
   }
 
   let buttonCSS =
-    "bg-cyan-500 rounded-xl py-3 px-2 mt-3 mx-3 hover:bg-cyan-800 focus:bg-cyan-800 focus:outline-4 focus:outline-offset-2 focus:outline-dotted text-3xl truncate";
+    "bg-cyan-500 rounded-xl py-3 px-2 mt-3 mx-3 hover:bg-cyan-800 focus:bg-cyan-800 focus:outline-4 focus:outline-offset-2 focus:outline-dotted text-3xl text-wrap";
 
   let selectedButtonCSS =
     "text-3xl truncate rounded-xl py-3 px-2 mt-3 mx-3 bg-cyan-800 outline-4 outline-offset-2 outline-dotted";
 
   return (
-    // manage selected CSS with state (since user can focus on background)
     <>
       <div className="grid grid-cols-2 w-1/2 mt-6">
         {answers.map((answer, index) => {
@@ -59,8 +58,8 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
         })}
       </div>
       <button
-        // disable if no answer picked
-        disabled={selectedAnswer.index === "none"}
+        // disable if no answer picked OR if answer submitted
+        disabled={selectedAnswer.index === "none" || answerSubmitted}
         onClick={handleAnswerSubmit}
         className="bg-cyan-500 rounded-xl py-2 px-4 mt-8 mx-3 hover:bg-cyan-800 hover:scale-110 transition duration-300 text-3xl"
       >

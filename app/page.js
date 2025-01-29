@@ -8,17 +8,12 @@ import CustomFooter from "../components/custom-footer";
 
 function HomePage() {
   return (
-    // DONE: results page with play again button
-    // DONE: color code correct vs incorrect when submitted; correct vs incorrect messaging on page before redirect?
-    // TODO: create ui folder; generalize button component; add footer to ui
-    // TODO: add footer to layout
-    // TODO: add bluey theme song as audio file
-    // TODO: restart game modal for quiz section?
+    // TODO: fix double submit bug
     // TODO: setup error and not found templates
-    // TODO: ensure correct answer index is randomized
-    // TODO: general refactor of CSS and components
-    // TODO: wire up claude
+    // TODO: general refactor of CSS
     // TODO: implement fallback if claude returns error
+    // TODO: create Button component
+    // TODO: set font-sizw CSS for answers depending on # of characters OR wrap text
     <>
       <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
         <div className="flex justify-center hover:scale-110 transition delay-100 duration-300">

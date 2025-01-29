@@ -33,7 +33,6 @@ function SelectLevelPage() {
         </div>
         <div className="flex space-x-4 mt-12">
           {/* set as array.map? */}
-          {/* update with tailwind focus */}
           <SelectLevelButton
             buttonText="Easy"
             selectedLevel={selectedLevel}

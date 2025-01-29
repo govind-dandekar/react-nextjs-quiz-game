@@ -37,10 +37,6 @@ function PlayGame({ params }) {
   }, [quizQuestions]);
 
   function handleAnswerSubmit(answerFlag) {
-    // manage ui updates based on correct vs incorrect answer
-    console.log("correctAnswerCounter: ");
-    console.log(correctAnswerCounter);
-
     if (answerFlag) {
       setCorrectAnswerCounter((prevCounter) => prevCounter + 1);
     }
@@ -75,10 +71,8 @@ function PlayGame({ params }) {
   if (gameMode === "playQuiz") {
     const displayIndex = questionIndex + 1;
     const displayQuestion = quizQuestions[questionIndex].question;
-    // array of objects: answers and t/f flag
     const answers = quizQuestions[questionIndex].answers;
 
-    //adjust min and max widths -- make fixed width question and answer card
     return (
       <>
         <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
