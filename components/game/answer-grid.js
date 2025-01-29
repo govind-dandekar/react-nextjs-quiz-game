@@ -4,8 +4,8 @@ import { useState } from "react";
 
 import CorrectVSIncorrectAlert from "./correct-vs-incorrect-alert";
 import SubmitButton from "../ui/submit-button";
+import SelectButton from "../ui/select-button";
 
-// need to re-factor answer grid
 function AnswerGrid({ answers, onSubmitAnswer }) {
   const [selectedAnswer, setSelectedAnswer] = useState({
     index: "none",
@@ -35,7 +35,6 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
   }
 
   // refactor with @/ui button components
-  // move correct indicator to its own component
   let buttonCSS =
     "bg-cyan-500 rounded-xl py-3 px-2 mt-3 mx-3 hover:bg-cyan-800 focus:bg-cyan-800 focus:outline-4 focus:outline-offset-2 focus:outline-dotted text-3xl text-wrap";
 

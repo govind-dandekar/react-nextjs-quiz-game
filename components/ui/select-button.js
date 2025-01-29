@@ -14,13 +14,7 @@ function SelectButton({
     "py-8 px-12 rounded-2xl mt-12 text-3xl outline-4 outline-offset-2 outline-dotted bg-cyan-900";
 
   return (
-    <button
-      className={
-        buttonText === selectedLevel ? selectedButtonCSS : baseButtonCSS
-      }
-      onClick={() => onSelect(buttonText)}
-      {...props}
-    >
+    <button onClick={() => onSelect(buttonText)} {...props}>
       {children}
     </button>
   );

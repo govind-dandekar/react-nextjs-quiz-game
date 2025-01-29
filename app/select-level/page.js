@@ -8,6 +8,11 @@ import { redirect } from "next/navigation";
 import SubmitButton from "@/components/ui/submit-button";
 import SelectButton from "@/components/ui/select-button";
 
+import {
+  baseButtonCSS,
+  selectedButtonCSS,
+} from "@/components/ui/util/button-css";
+
 function SelectLevelPage() {
   const [selectedLevel, setSelectedLevel] = useState("none");
 
@@ -40,7 +45,9 @@ function SelectLevelPage() {
             <SelectButton
               key={level}
               buttonText={level}
-              selectedLevel={selectedLevel}
+              className={
+                level === selectedLevel ? selectedButtonCSS : baseButtonCSS
+              }
               onSelect={levelSelectHandler}
             >
               {level}
