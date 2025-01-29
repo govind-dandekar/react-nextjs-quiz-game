@@ -27,7 +27,7 @@ function SelectLevelPage() {
 
   return (
     <>
-      <div className="flex justify-center hover:scale-110 transition delay-100 duration-300">
+      <div className="flex justify-center">
         <Image
           src="/bluey-bingo-sitting.png"
           width={128}
