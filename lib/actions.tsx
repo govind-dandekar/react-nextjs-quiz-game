@@ -7,6 +7,7 @@ import { ContentBlock } from "@anthropic-ai/sdk/resources";
 import { DUMMY_QUESTIONS_EASY, DUMMY_QUESTIONS_MEDIUM, DUMMY_QUESTIONS_HARD } from "./dummy-questions";
 
 // add error handling -- fall back to dummy responses if API call fails
+// implement try-catch
 export async function getQuestionsAnthropic(level: string) {
   
   const anthropic = new Anthropic({
@@ -73,6 +74,7 @@ export async function getQuestionsAnthropic(level: string) {
 }
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export async function getQuestionsDummy(level: string): Promise<any>{
+  
   if (level === 'easy'){
     return DUMMY_QUESTIONS_EASY
   } else if (level === "medium"){

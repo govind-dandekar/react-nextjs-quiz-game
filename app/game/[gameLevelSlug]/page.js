@@ -11,7 +11,7 @@ import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
 import SubmitButton from "@/components/ui/submit-button";
 
-function PlayGame({ params }) {
+function GamePage({ params }) {
   // TODO: if selected level is not one of the options redirect
   const { gameLevelSlug } = React.use(params);
 
@@ -19,10 +19,10 @@ function PlayGame({ params }) {
   const [gameMode, setGameMode] = useState("instructions");
   // track current question
   const [questionIndex, setQuestionIndex] = useState(0);
-  // track correct answers for results summary
+  // track # of correct answers for results summary
   const [correctAnswerCounter, setCorrectAnswerCounter] = useState(0);
 
-  // useActionState to retrieve data from server
+  // useActionState to securely retrieve data from server
   const [quizQuestions, formAction] = useActionState(
     getQuestionsDummy.bind(null, gameLevelSlug),
     []
@@ -50,15 +50,14 @@ function PlayGame({ params }) {
     setQuestionIndex((prevIndex) => prevIndex + 1);
   }
 
+  // use action to securely get data from server
   if (gameMode === "instructions") {
     return (
       <>
         <Instructions />
-        <div className="mt-12 text-3xl">
-          <form action={formAction}>
-            <SubmitButton>Start Quiz!</SubmitButton>
-          </form>
-        </div>
+        <form action={formAction}>
+          <SubmitButton>Start Quiz!</SubmitButton>
+        </form>
       </>
     );
   }
@@ -98,4 +97,4 @@ function PlayGame({ params }) {
   }
 }
 
-export default PlayGame;
+export default GamePage;

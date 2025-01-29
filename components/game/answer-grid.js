@@ -33,6 +33,7 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
     }, 1000);
   }
 
+  // refactor with @/ui button components
   let buttonCSS =
     "bg-cyan-500 rounded-xl py-3 px-2 mt-3 mx-3 hover:bg-cyan-800 focus:bg-cyan-800 focus:outline-4 focus:outline-offset-2 focus:outline-dotted text-3xl text-wrap";
 
@@ -67,6 +68,7 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
             : "Submit Answer!")}
         {answerSubmitted && "Submitted!"}
       </button>
+      {/* move correct vs incorrect to own component? */}
       <div
         className={
           !answerSubmitted
