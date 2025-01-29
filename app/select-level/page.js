@@ -6,7 +6,6 @@ import Image from "next/image";
 
 import SelectLevelButton from "../../components/select-level/select-level-button";
 import StartQuizButton from "../../components/select-level/start-quiz-button";
-import CustomFooter from "@/components/custom-footer";
 
 function SelectLevelPage() {
   const [selectedLevel, setSelectedLevel] = useState("none");
