@@ -3,7 +3,6 @@ import Image from "next/image";
 function Instructions() {
   return (
     <>
-      {/* image container */}
       <div className="flex justify-center">
         <Image
           src="/bluey-family-car.png"
