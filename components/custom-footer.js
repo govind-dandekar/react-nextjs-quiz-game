@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaGithub } from "react-icons/fa";
 
 function CustomFooter() {
   return (
@@ -10,11 +10,12 @@ function CustomFooter() {
         <a href="https://www.claude.ai">Claude</a>
       </p>
       <p>for non-commercial entertainment purposes only</p>
-      <span className="mt-1">
-        <Link href="/">
-          <FaHome className="scale-150" />
-        </Link>
-      </span>
+      <Link href="https://github.com/govind-dandekar/react-nextjs-quiz-game">
+        <FaGithub className="scale-150 mt-1" />
+      </Link>
+      <Link href="/">
+        <FaHome className="scale-150 mt-1" />
+      </Link>
     </div>
   );
 }

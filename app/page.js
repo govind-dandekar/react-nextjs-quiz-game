@@ -8,12 +8,11 @@ import CustomFooter from "../components/custom-footer";
 
 function HomePage() {
   return (
-    // TODO: fix double submit bug
     // TODO: setup error and not found templates
     // TODO: general refactor of CSS
     // TODO: implement fallback if claude returns error
     // TODO: create Button component
-    // TODO: set font-sizw CSS for answers depending on # of characters OR wrap text
+    // TODO: add github repo link
     <>
       <div className="flex flex-col bg-cyan-400 shadow-2xl rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
         <div className="flex justify-center hover:scale-110 transition delay-100 duration-300">
