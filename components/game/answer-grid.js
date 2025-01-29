@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import Image from "next/image";
+import CorrectVsIncorrectAlert from "./correct-vs-incorrect-alert";
 
 // need to re-factor answer grid
 function AnswerGrid({ answers, onSubmitAnswer }) {
@@ -34,6 +34,7 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
   }
 
   // refactor with @/ui button components
+  // move correct indicator to its own component
   let buttonCSS =
     "bg-cyan-500 rounded-xl py-3 px-2 mt-3 mx-3 hover:bg-cyan-800 focus:bg-cyan-800 focus:outline-4 focus:outline-offset-2 focus:outline-dotted text-3xl text-wrap";
 
@@ -68,40 +69,10 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
             : "Submit Answer!")}
         {answerSubmitted && "Submitted!"}
       </button>
-      {/* move correct vs incorrect to own component? */}
-      <div
-        className={
-          !answerSubmitted
-            ? "text-3xl mt-8 invisible py-2 rounded-xl px-4"
-            : answerSubmitted && selectedAnswer.flag
-            ? "text-3xl mt-8 py-2 rounded-xl px-6 bg-emerald-300"
-            : "text-3xl mt-8 py-2 rounded-xl px-6 bg-fuchsia-300"
-        }
-      >
-        {selectedAnswer.flag ? (
-          <p>
-            <Image
-              src="/bingo-celebrating.png"
-              alt="bingo celebrating"
-              width={30}
-              height={40}
-              className="inline align-middle"
-            />{" "}
-            Correct!
-          </p>
-        ) : (
-          <p>
-            <Image
-              src="/bingo-silly.png"
-              alt="bingo looking silly"
-              width={30}
-              height={40}
-              className="inline align-middle"
-            />{" "}
-            Incorrect
-          </p>
-        )}
-      </div>
+      <CorrectVsIncorrectAlert
+        answerSubmitted={answerSubmitted}
+        selectedAnswer={selectedAnswer}
+      />
     </>
   );
 }
