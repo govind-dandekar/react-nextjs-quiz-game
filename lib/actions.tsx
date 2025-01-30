@@ -17,7 +17,7 @@ export async function getQuestionsAnthropic(level: string) {
     const msg = await anthropic.messages.create({
       model: "claude-3-5-sonnet-20241022",
       max_tokens: 8192,
-      temperature: 0,
+      temperature: 0.5,
       messages: [
         {
           "role": "user",
