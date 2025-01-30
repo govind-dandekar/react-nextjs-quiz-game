@@ -31,9 +31,9 @@ export async function getQuestionsAnthropic(level: string) {
       ]
     });
 
-    // @ts-expect-error
+    // @ts-expect-error/sdk-error
     return parseClaudeQuizResponse(msg)
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 } catch (error: any) {
   console.error('Error retrieving data from Claude. Fallback to static dummy questions');
   console.error("Claude error: "  + error.message )
