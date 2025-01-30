@@ -41,7 +41,7 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
 
   return (
     <>
-      <div className="grid grid-cols-2 w-2/3 h-1/3 gap-4 mt-8">
+      <div className="grid grid-cols-2 w-2/3 h-1/3 gap-6 mt-8">
         {answers.map((answer, index) => {
           return (
             <SelectButton
