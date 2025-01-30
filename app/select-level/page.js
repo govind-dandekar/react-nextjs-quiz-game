@@ -27,14 +27,12 @@ function SelectLevelPage() {
 
   return (
     <>
-      <div className="flex justify-center">
-        <Image
-          src="/bluey-bingo-sitting.png"
-          width={128}
-          height={200}
-          alt="bluey and bingo sitting"
-        />
-      </div>
+      <Image
+        src="/bluey-bingo-sitting.png"
+        width={128}
+        height={200}
+        alt="bluey and bingo sitting"
+      />
       {/* level selection container */}
       <div className="text-6xl text-center mt-8">
         <p>Select Your Level!</p>

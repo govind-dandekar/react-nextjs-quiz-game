@@ -6,7 +6,10 @@ import CorrectVSIncorrectAlert from "./correct-vs-incorrect-alert";
 import SubmitButton from "../ui/submit-button";
 import SelectButton from "../ui/select-button";
 
-import { baseButtonCSS, selectedButtonCSS } from "@/components/ui/util";
+import {
+  answerGridBaseButtonCSS,
+  answerGridSelectedButtonCSS,
+} from "@/components/ui/util/button-css";
 
 function AnswerGrid({ answers, onSubmitAnswer }) {
   const [selectedAnswer, setSelectedAnswer] = useState({
@@ -38,7 +41,7 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
 
   return (
     <>
-      <div className="grid grid-cols-2 w-1/2 mt-6">
+      <div className="grid grid-cols-2 w-2/3 h-1/3 gap-4 mt-8">
         {answers.map((answer, index) => {
           return (
             <SelectButton
@@ -46,8 +49,8 @@ function AnswerGrid({ answers, onSubmitAnswer }) {
               key={answer.text}
               className={
                 selectedAnswer.index === index
-                  ? selectedButtonCSS
-                  : baseButtonCSS
+                  ? answerGridSelectedButtonCSS
+                  : answerGridBaseButtonCSS
               }
             >
               {answer.text}

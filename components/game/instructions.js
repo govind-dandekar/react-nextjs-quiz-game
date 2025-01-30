@@ -3,14 +3,12 @@ import Image from "next/image";
 function Instructions() {
   return (
     <>
-      <div className="flex justify-center">
-        <Image
-          src="/bluey-family-car.png"
-          width={160}
-          height={120}
-          alt="bluey family with play car"
-        />
-      </div>
+      <Image
+        src="/bluey-family-car.png"
+        width={160}
+        height={120}
+        alt="bluey family with play car"
+      />
       <div className="text-4xl mt-8">
         <p>Instructions:</p>
         <div className="text-4xl space-y-4 mt-4">

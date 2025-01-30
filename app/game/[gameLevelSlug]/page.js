@@ -69,8 +69,8 @@ function GamePage({ params }) {
 
     return (
       <>
-        <p className="text-4xl">Question {displayIndex} of 10</p>
-        <h1 className="text-5xl mt-6">{displayQuestion}</h1>
+        <p className="text-3xl mt-6">Question {displayIndex} of 10</p>
+        <p className="text-5xl mt-4">{displayQuestion}</p>
         <AnswerGrid answers={answers} onSubmitAnswer={handleAnswerSubmit} />
       </>
     );
