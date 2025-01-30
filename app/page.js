@@ -8,8 +8,8 @@ import SubmitButton from "@/components/ui/submit-button";
 
 function HomePage() {
   return (
-    // TODO: implement fallback to dummy responses if claude returns error
-    // TODO: standardize image hover behavior across pages - put in util file?
+    // TODO: implement fallback to dummy responses if Claude returns error
+    // TODO: add try-catch to Anthropic API calls
     <>
       <Image
         src="/bluey-bingo.png"

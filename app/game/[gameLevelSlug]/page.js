@@ -5,11 +5,14 @@ import { useEffect, useState, useActionState } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
-// import { getQuestionsAnthropic } from "@/lib/actions"
+
+// import { getQuestionsAnthropic } from "@/lib/actions";
 import { getQuestionsDummy } from "@/lib/actions";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
 import SubmitButton from "@/components/ui/submit-button";
+
+import LDRSGridAnimationLoader from "@/components/ui/ldrs-grid-animation-loader";
 
 function GamePage({ params }) {
   // TODO: if selected level is not one of the options redirect
@@ -22,19 +25,20 @@ function GamePage({ params }) {
   // track # of correct answers for results summary
   const [correctAnswerCounter, setCorrectAnswerCounter] = useState(0);
 
-  // useActionState to securely retrieve data from server
-  const [quizQuestions, formAction] = useActionState(
+  // useActionState to securely retrieve data from server component via server action
+  const [quizQuestions, formAction, isPending] = useActionState(
     getQuestionsDummy.bind(null, gameLevelSlug),
     []
   );
 
+  // update page state upon questions loading
   useEffect(() => {
-    if (quizQuestions.length === 0) {
-      return;
-    } else {
+    if (isPending) {
+      setGameMode("loading");
+    } else if (!isPending && quizQuestions.length > 0) {
       setGameMode("playQuiz");
     }
-  }, [quizQuestions]);
+  }, [quizQuestions, isPending]);
 
   function handleAnswerSubmit(answerFlag) {
     if (answerFlag) {
@@ -50,8 +54,9 @@ function GamePage({ params }) {
     setQuestionIndex((prevIndex) => prevIndex + 1);
   }
 
-  // use action to securely get data from server
+  // game instructions UI
   if (gameMode === "instructions") {
+    // use action to securely retreive data from server
     return (
       <>
         <Instructions />
@@ -62,6 +67,19 @@ function GamePage({ params }) {
     );
   }
 
+  // loading UI for Claude latency
+  if (gameMode === "loading") {
+    return (
+      <>
+        <p className="text-4xl mb-12">
+          Claude Is Preparing Your Bluey Quiz Questions!
+        </p>
+        <LDRSGridAnimationLoader />
+      </>
+    );
+  }
+
+  // play game UI
   if (gameMode === "playQuiz") {
     const displayIndex = questionIndex + 1;
     const displayQuestion = quizQuestions[questionIndex].question;
@@ -76,6 +94,7 @@ function GamePage({ params }) {
     );
   }
 
+  // game results UI
   if (gameMode === "results") {
     return (
       <>
