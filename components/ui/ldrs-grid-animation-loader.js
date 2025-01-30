@@ -8,7 +8,7 @@ function LDRSGridAnimationLoader() {
     }
     getLoader();
   }, []);
-  return <l-grid size="200" speed="2.5" color="#00838f"></l-grid>;
+  return <l-grid size="200" speed="2.5" color="white"></l-grid>;
 }
 
 export default LDRSGridAnimationLoader;
