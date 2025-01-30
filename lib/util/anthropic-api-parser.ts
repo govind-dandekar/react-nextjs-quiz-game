@@ -22,9 +22,7 @@ interface Question {
 export function parseClaudeQuizResponse(response: ClaudeResponse): Question[] {
   // Get the text content from the first content block
   const textContent = response.content[0].text;
-  console.log('textContent');
-  console.log(textContent);
-  
+ 
   // Find the JSON array string using regex
   const jsonMatch = textContent.match(/\[\s*\{[\s\S]*\}\s*\]/);
   
@@ -35,8 +33,6 @@ export function parseClaudeQuizResponse(response: ClaudeResponse): Question[] {
   try {
     // Parse the JSON array string
     const questions: Question[] = JSON.parse(jsonMatch[0]);
-    console.log('questions array')
-    console.log(questions);
     return questions;
   } catch (error) {
     throw new Error(`Failed to parse quiz questions: ${error}`);
