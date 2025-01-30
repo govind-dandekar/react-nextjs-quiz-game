@@ -31,11 +31,12 @@ export async function getQuestionsAnthropic(level: string) {
       ]
     });
 
-    // @ts-ignore
+    // @ts-expect-error
     return parseClaudeQuizResponse(msg)
 
 } catch (error: any) {
-  console.error('Error retrieving data from Claude. Fallback to static dummy questions')
+  console.error('Error retrieving data from Claude. Fallback to static dummy questions');
+  console.error("Claude error: "  + error.message )
   return getQuestionsDummy(level)
 }
 
