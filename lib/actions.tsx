@@ -30,7 +30,6 @@ export async function getQuestionsAnthropic(level: string) {
         }
       ]
     });
-
     // @ts-expect-error/sdk-error
     return parseClaudeQuizResponse(msg)
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -49,7 +48,7 @@ export async function getQuestionsDummy(level: string): Promise<any>{
   await new Promise<void>((resolve) => {
     setTimeout(() => {
       resolve()
-    }, 5000) // 5 second delay
+    }, 1000) // delay for testing
   })
 
   if (level === 'easy'){

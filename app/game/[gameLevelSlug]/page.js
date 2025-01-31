@@ -12,7 +12,8 @@ import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
 import SubmitButton from "@/components/ui/submit-button";
 
-import LDRSGridAnimationLoader from "@/components/ui/ldrs-grid-animation-loader";
+// import LDRSGridAnimationLoader from "@/components/ui/ldrs-grid-animation-loader";
+import LDRSBouncyAnimationLoader from "@/components/ui/ldrs-bouncy-animation-loader";
 
 function GamePage({ params }) {
   // TODO: if selected level is not one of the options redirect
@@ -74,7 +75,7 @@ function GamePage({ params }) {
         <p className="text-4xl mb-12">
           Claude Is Preparing Your Bluey Quiz Questions!
         </p>
-        <LDRSGridAnimationLoader />
+        <LDRSBouncyAnimationLoader />
       </>
     );
   }
