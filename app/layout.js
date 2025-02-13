@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { Chewy } from "next/font/google";
 
@@ -23,6 +24,7 @@ function RootLayout({ children }) {
           <div className="flex flex-col bg-cyan-400 rounded-2xl w-3/4 h-[40rem] text-white text-center items-center justify-center">
             {children}
             <Analytics />
+            <SpeedInsights />
           </div>
           <CustomFooter />
         </div>
