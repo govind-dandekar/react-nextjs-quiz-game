@@ -2,18 +2,17 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+
 import { parseClaudeQuizResponse } from "./util/anthropic-api-parser"
 
 import { DUMMY_QUESTIONS_EASY, DUMMY_QUESTIONS_MEDIUM, DUMMY_QUESTIONS_HARD } from "./dummy-questions";
 
 // implement gemini logic
 export async function getQuestionsGemini(level: string){
-  const {
-    GoogleGenerativeAI
-  } = require("@google/generative-ai");
-  
   const apiKey = process.env.GEMINI_API_KEY;
-  const genAI = new GoogleGenerativeAI(apiKey);
+  const genAI = new GoogleGenerativeAI(apiKey!);
   
   const model = genAI.getGenerativeModel({
     model: "gemini-2.0-flash",
