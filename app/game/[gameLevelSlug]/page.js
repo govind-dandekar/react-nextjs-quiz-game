@@ -7,8 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getQuestionsAnthropic } from "@/lib/actions";
-// import { getQuestionsDummy } from "@/lib/actions";
-// import { getQuestionsGemini } from "@/lib/actions";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
 import SubmitButton from "@/components/ui/submit-button";
@@ -17,7 +15,6 @@ import SubmitButton from "@/components/ui/submit-button";
 import LDRSBouncyAnimationLoader from "@/components/ui/ldrs-bouncy-animation-loader";
 
 function GamePage({ params }) {
-  // TODO: if selected level is not one of the options redirect
   const { gameLevelSlug } = React.use(params);
 
   // manage flow of game in PlayGame
