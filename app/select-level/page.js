@@ -34,7 +34,7 @@ function SelectLevelPage() {
         alt="bluey and bingo sitting"
       />
       {/* level selection container */}
-      <div className="text-6xl text-center mt-8">
+      <div className="text-3xl text-center mt-8 md:text-6xl">
         <p>Select Your Level!</p>
       </div>
       <div className="flex space-x-4">
