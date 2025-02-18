@@ -8,8 +8,6 @@ import SubmitButton from "@/components/ui/submit-button";
 
 function HomePage() {
   return (
-    // TODO: implement fallback to dummy responses if Claude returns error
-    // TODO: add try-catch to Anthropic API calls
     <>
       <Image
         src="/bluey-bingo.png"
@@ -17,7 +15,7 @@ function HomePage() {
         height={200}
         alt="bluey and bingo"
       />
-      <div className="text-6xl space-y-4 text-nowrap mt-8">
+      <div className="space-y-4 text-nowrap mt-8 text-3xl md:text-6xl">
         <p>Welcome To...</p>
         <p>The Bluey Quiz Game!!!</p>
       </div>
