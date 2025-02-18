@@ -7,7 +7,6 @@ import { parseClaudeQuizResponse } from "./util/anthropic-api-parser"
 import { DUMMY_QUESTIONS_EASY, DUMMY_QUESTIONS_MEDIUM, DUMMY_QUESTIONS_HARD } from "./dummy-questions";
 
 // implement with Vercel AI SDK?
-
 export async function getQuestionsAnthropic(level: string) {
   try {
     const anthropic = new Anthropic({
