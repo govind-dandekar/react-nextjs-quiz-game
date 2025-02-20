@@ -17,7 +17,8 @@ function Results({ correctAnswerCounter }) {
           Correct Answers: {correctAnswerCounter} out of 10!
         </p>
         <p className="text-2xl md:text-3xl mt-6">
-          Bingo says "Good try! Those questions were really trifficult!"
+          Bingo says &quot;Good try! Those questions were really
+          trifficult!&quot;
         </p>
         <SubmitButton>
           <Link href="/select-level">Play Again!</Link>
@@ -37,7 +38,7 @@ function Results({ correctAnswerCounter }) {
           Correct Answers: {correctAnswerCounter} out of 10!
         </p>
         <p className="text-2xl md:text-4xl mt-6">
-          Bingo says "Hooray! Great work!"
+          Bingo says &quot;Hooray! Great work!&quot;
         </p>
         <SubmitButton>
           <Link href="/select-level">Play Again!</Link>
@@ -57,7 +58,7 @@ function Results({ correctAnswerCounter }) {
           Correct Answers: {correctAnswerCounter} out of 10!
         </p>
         <p className="text-2xl md:text-4xl mt-6">
-          Bluey & Bingo say "Wackadoo! You're great!"
+          Bluey & Bingo say &quot;Wackadoo! You're amazing!&quot;
         </p>
         <SubmitButton>
           <Link href="/select-level">Play Again!</Link>
