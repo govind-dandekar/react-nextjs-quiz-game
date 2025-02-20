@@ -3,11 +3,9 @@
 import * as React from "react";
 import { useEffect, useState, useActionState } from "react";
 
-import Image from "next/image";
-import Link from "next/link";
-
 // import { getQuestionsDummy } from "@/lib/actions";
 import { getQuestionsAnthropic } from "@/lib/actions";
+import Results from "@/components/game/results";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
 import SubmitButton from "@/components/ui/submit-button";
@@ -97,23 +95,7 @@ function GamePage({ params }) {
 
   // game results UI
   if (gameMode === "results") {
-    return (
-      <>
-        <Image
-          src="/bluey-bingo-car.png"
-          width={160}
-          height={120}
-          alt="bluey and bingo playing with a toy car"
-        />
-        <p className="text-2xl md:text-5xl mt-8">
-          Correct Answers: {correctAnswerCounter} out of 10!
-        </p>
-        <p className="text-2xl md:text-5xl mt-6">Great Work!</p>
-        <SubmitButton>
-          <Link href="/select-level">Play Again!</Link>
-        </SubmitButton>
-      </>
-    );
+    return <Results correctAnswerCounter={correctAnswerCounter} />;
   }
 }
 
