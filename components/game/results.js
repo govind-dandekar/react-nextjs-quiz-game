@@ -1,43 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import SubmitButton from "@/components/ui/submit-button";
 
-const DYNAMIC_RESULTS_ARRAY = [
-  {
-    image: (
-      <Image
-        src="/bingo-trifficult.png"
-        width={128}
-        height={200}
-        alt="bingo playing a xylophone"
-      />
-    ),
-    text: 'Bingo says "Good try! Those questions were really trifficult!"',
-  },
-  {
-    image: (
-      <Image
-        src="/bingo-celebrating.png"
-        width={128}
-        height={200}
-        alt="bingo celebrating"
-      />
-    ),
-    text: 'Bingo says "Hooray! Great work!"',
-  },
-  {
-    image: (
-      <Image
-        src="/bluey-bingo-car.png"
-        width={160}
-        height={120}
-        alt="bluey and bingo playing with a toy car"
-      />
-    ),
-    text: 'Bluey & Bingo say "Wackadoo! You\'re amazing!"',
-  },
-];
+import { DYNAMIC_RESULTS_ARRAY } from "./dynamic-results-array";
 
 function Results({ correctAnswerCounter }) {
   let resultsIndex;
