@@ -58,7 +58,7 @@ function Results({ correctAnswerCounter }) {
           Correct Answers: {correctAnswerCounter} out of 10!
         </p>
         <p className="text-2xl md:text-4xl mt-6">
-          Bluey & Bingo say &quot;Wackadoo! You're amazing!&quot;
+          Bluey & Bingo say &quot;Wackadoo! You&apos;re amazing!&quot;
         </p>
         <SubmitButton>
           <Link href="/select-level">Play Again!</Link>
