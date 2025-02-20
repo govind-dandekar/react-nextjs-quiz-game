@@ -7,9 +7,6 @@ import { redirect } from "next/navigation";
 import SubmitButton from "@/components/ui/submit-button";
 
 function HomePage() {
-  // TODO: update footer icons for mobile (increase spacing between icons)
-  // TODO: update font size when loading
-  // TODO: update question option size for small screens
   return (
     <>
       <Image
