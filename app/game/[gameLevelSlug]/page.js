@@ -4,7 +4,7 @@ import * as React from "react";
 import { useEffect, useState, useActionState } from "react";
 
 // import { getQuestionsDummy } from "@/lib/actions";
-import { getQuestionsAnthropic } from "@/lib/actions";
+import { getQuestionsAnthropic, getQuestionsVercel } from "@/lib/actions";
 import Results from "@/components/game/results";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
@@ -24,7 +24,7 @@ function GamePage({ params }) {
 
   // useActionState to securely retrieve data from server component via server action
   const [quizQuestions, formAction, isPending] = useActionState(
-    getQuestionsAnthropic.bind(null, gameLevelSlug),
+    getQuestionsVercel.bind(null, gameLevelSlug),
     []
   );
 

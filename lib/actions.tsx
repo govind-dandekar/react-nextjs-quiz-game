@@ -12,20 +12,17 @@ import { generateObject } from 'ai';
 import { z } from 'zod';
 
 // vercel implementation
-export async function getQuestionsVercel(){
+export async function getQuestionsVercel(level: string){
   const { object } = await generateObject({
     model: anthropic("claude-3-5-sonnet-20241022"),
     schema: z.object({
-      recipe: z.object({
-        name: z.string(),
-        ingredients: z.array(z.object({ name: z.string(), amount: z.string() })),
-        steps: z.array(z.string()),
-      }),
+      questionsArray: z.array(z.object({question: z.string(), answers: z.array(z.object({text: z.string(), correct: z.boolean()}))}))
     }),
-    prompt: "please provide an array containing 10 quiz questions related to the kids tv show \"Bluey.\"  each question should have 4 possible answers, one of which is the correct answer.  the correct answer should be labelled as \"true\" and the incorrect answers should be labelled as \"false\".  out of three possible settings of \"easy\", \"medium\" and \"hard\", the user has requested medium questions.  the position of the correct answer should be randomized.\n ",
-  });
+    prompt: "please provide an array containing 10 quiz questions related to the kids tv show \"Bluey.\"  each question should have 4 possible answers, one of which is the correct answer.  the correct answer should be labelled as \"true\" and the incorrect answers should be labelled as \"false\".  out of three possible settings of \"easy\", \"medium\" and \"hard\", the user has requested " + level + "questions.  the position of the correct answer should be randomized.\n "
+  })
+  console.log(object.questionsArray);
+  return object.questionsArray;
 }
-
 
 export async function getQuestionsAnthropic(level: string) {
   try {
@@ -50,7 +47,6 @@ export async function getQuestionsAnthropic(level: string) {
       ]
     });
     // log for vercel schema purposes
-    console.log(msg);
     // @ts-expect-error/sdk-error
     return parseClaudeQuizResponse(msg)
   /* eslint-disable @typescript-eslint/no-explicit-any */
