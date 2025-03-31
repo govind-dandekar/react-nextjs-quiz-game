@@ -49,6 +49,7 @@ export async function getQuestionsAnthropic(level: string) {
         }
       ]
     });
+    // log for vercel schema purposes
     console.log(msg);
     // @ts-expect-error/sdk-error
     return parseClaudeQuizResponse(msg)
