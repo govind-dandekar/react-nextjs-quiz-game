@@ -20,6 +20,8 @@ export async function getQuestionsVercel(level: string){
       }),
       prompt: "please provide an array containing 10 quiz questions related to the kids tv show \"Bluey.\"  each question should have 4 possible answers, one of which is the correct answer.  the correct answer should be labelled as \"true\" and the incorrect answers should be labelled as \"false\".  out of three possible settings of \"easy\", \"medium\" and \"hard\", the user has requested " + level + "questions.  the position of the correct answer should be randomized.\n "
     })
+
+    return object.questionsArray;
   } catch (error: any) {
     console.error('Error retrieving data from Claude. Fallback to static dummy questions');
     console.error("Claude error: "  + error.message );
