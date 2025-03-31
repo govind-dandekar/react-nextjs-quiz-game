@@ -1,12 +1,32 @@
 "use server";
 
 import Anthropic from "@anthropic-ai/sdk";
+import { anthropic } from '@ai-sdk/anthropic';
 
 import { parseClaudeQuizResponse } from "./util/anthropic-api-parser"
 
 import { DUMMY_QUESTIONS_EASY, DUMMY_QUESTIONS_MEDIUM, DUMMY_QUESTIONS_HARD } from "./dummy-questions";
 
-// implement with Vercel AI SDK?
+
+import { generateObject } from 'ai';
+import { z } from 'zod';
+
+// vercel implementation
+export async function getQuestionsVercel(){
+  const { object } = await generateObject({
+    model: anthropic("claude-3-5-sonnet-20241022"),
+    schema: z.object({
+      recipe: z.object({
+        name: z.string(),
+        ingredients: z.array(z.object({ name: z.string(), amount: z.string() })),
+        steps: z.array(z.string()),
+      }),
+    }),
+    prompt: "please provide an array containing 10 quiz questions related to the kids tv show \"Bluey.\"  each question should have 4 possible answers, one of which is the correct answer.  the correct answer should be labelled as \"true\" and the incorrect answers should be labelled as \"false\".  out of three possible settings of \"easy\", \"medium\" and \"hard\", the user has requested medium questions.  the position of the correct answer should be randomized.\n ",
+  });
+}
+
+
 export async function getQuestionsAnthropic(level: string) {
   try {
     const anthropic = new Anthropic({
@@ -29,6 +49,7 @@ export async function getQuestionsAnthropic(level: string) {
         }
       ]
     });
+    console.log(msg);
     // @ts-expect-error/sdk-error
     return parseClaudeQuizResponse(msg)
   /* eslint-disable @typescript-eslint/no-explicit-any */
