@@ -22,6 +22,7 @@ export async function getQuestionsVercel(level: string){
     })
 
     return object.questionsArray;
+    /* eslint-disable @typescript-eslint/no-explicit-any */
   } catch (error: any) {
     console.error('Error retrieving data from Claude. Fallback to static dummy questions');
     console.error("Claude error: "  + error.message );
