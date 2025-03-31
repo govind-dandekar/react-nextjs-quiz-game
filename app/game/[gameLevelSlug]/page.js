@@ -4,7 +4,8 @@ import * as React from "react";
 import { useEffect, useState, useActionState } from "react";
 
 // import { getQuestionsDummy } from "@/lib/actions";
-import { getQuestionsAnthropic, getQuestionsVercel } from "@/lib/actions";
+// import { getQuestionsAnthropic } from "@/lib/actions";
+import { getQuestionsVercel } from "@/lib/actions";
 import Results from "@/components/game/results";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
