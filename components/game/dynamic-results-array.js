@@ -8,6 +8,7 @@ export const DYNAMIC_RESULTS_ARRAY = [
         width={128}
         height={200}
         alt="bingo playing a xylophone"
+        priority
       />
     ),
     text: 'Bingo says "Good try! Those questions were really trifficult!"',
@@ -19,6 +20,7 @@ export const DYNAMIC_RESULTS_ARRAY = [
         width={128}
         height={200}
         alt="bingo celebrating"
+        priority
       />
     ),
     text: 'Bingo says "Hooray! Great work!"',
@@ -30,6 +32,7 @@ export const DYNAMIC_RESULTS_ARRAY = [
         width={160}
         height={120}
         alt="bluey and bingo playing with a toy car"
+        priority
       />
     ),
     text: 'Bluey & Bingo say "Wackadoo! You\'re amazing!"',

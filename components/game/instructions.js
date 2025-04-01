@@ -8,6 +8,7 @@ function Instructions() {
         width={160}
         height={120}
         alt="bluey family with play car"
+        priority
       />
       <div className="text-2xl md:text-4xl mt-8">
         <p>Instructions:</p>
