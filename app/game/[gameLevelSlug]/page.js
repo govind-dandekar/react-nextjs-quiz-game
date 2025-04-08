@@ -5,7 +5,10 @@ import { useEffect, useState, useActionState } from "react";
 
 // import { getQuestionsDummy } from "@/lib/actions";
 // import { getQuestionsAnthropic } from "@/lib/actions";
-import { getQuestionsVercel } from "@/lib/actions";
+import {
+  getQuestionsClaudeVercel,
+  // getQuestionsGeminiVercel,
+} from "@/lib/actions";
 import Results from "@/components/game/results";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
@@ -25,7 +28,7 @@ function GamePage({ params }) {
 
   // useActionState to securely retrieve data from server component via server action
   const [quizQuestions, formAction, isPending] = useActionState(
-    getQuestionsVercel.bind(null, gameLevelSlug),
+    getQuestionsClaudeVercel.bind(null, gameLevelSlug),
     []
   );
 
@@ -70,7 +73,7 @@ function GamePage({ params }) {
     return (
       <>
         <p className="text-2xl md:text-4xl mb-12">
-          Claude Is Preparing Your Bluey Quiz Questions!
+          Claude is Preparing Your Bluey Quiz Questions!
         </p>
         <LDRSBouncyAnimationLoader />
       </>
