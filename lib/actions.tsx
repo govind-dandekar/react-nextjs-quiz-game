@@ -36,8 +36,8 @@ export async function getQuestionsVercel(level: string, selectedModel: string){
     return object.questionsArray;
     /* eslint-disable @typescript-eslint/no-explicit-any */
   } catch (error: any) {
-    console.error('Error retrieving data from' + selectedModel +  "Fallback to static dummy questions");
-    console.error(selectedModel +  "error: "  + error.message );
+    console.error('Error retrieving data from ' + selectedModel +  ". Fallback to static dummy questions");
+    console.error(selectedModel +  " error: "  + error.message );
     return getQuestionsDummy(level)
   }
 }
