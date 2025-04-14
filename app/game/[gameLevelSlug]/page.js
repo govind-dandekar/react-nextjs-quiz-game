@@ -8,6 +8,7 @@ import Results from "@/components/game/results";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
 import SubmitButton from "@/components/ui/submit-button";
+import _ from "lodash";
 
 import LDRSBouncyAnimationLoader from "@/components/ui/ldrs-bouncy-animation-loader";
 
@@ -32,7 +33,6 @@ function GamePage({ params }) {
 
   // select random LLM
   useEffect(() => {
-    const _ = require("lodash");
     const LLMOptions = ["Gemini", "Llama", "Deepseek", "Claude"];
     const shuffledLLMOptions = _.shuffle(LLMOptions);
     console.log(shuffledLLMOptions);

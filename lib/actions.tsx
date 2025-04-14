@@ -1,6 +1,4 @@
 "use server";
-
-import Anthropic from "@anthropic-ai/sdk";
 import { anthropic } from '@ai-sdk/anthropic';
 import { google } from '@ai-sdk/google';
 import { groq } from '@ai-sdk/groq';;
