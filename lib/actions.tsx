@@ -16,7 +16,7 @@ const aiPromptEnd = "questions.  the position of the correct answer should be ra
 
 // vercel implementation
 export async function getQuestionsVercel(level: string, selectedModel: string){
-  let apiModel: LanguageModelV1 = groq("deepseek-r1-distill-llama-70b");
+  let apiModel: LanguageModelV1 = anthropic("claude-3-5-sonnet-20241022");
 
   if (selectedModel === 'gemini'){
     apiModel = google("gemini-2.0-flash-001")
@@ -25,8 +25,6 @@ export async function getQuestionsVercel(level: string, selectedModel: string){
   } else if (selectedModel === 'deepseek'){
     apiModel = groq("deepseek-r1-distill-llama-70b")
   } 
-  
-// anthropic("claude-3-5-sonnet-20241022")
 
   try {
     const { object } = await generateObject({

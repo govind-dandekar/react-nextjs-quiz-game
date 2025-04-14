@@ -3,13 +3,7 @@
 import * as React from "react";
 import { useEffect, useState, useActionState } from "react";
 
-// import { getQuestionsDummy } from "@/lib/actions";
-// import { getQuestionsAnthropic } from "@/lib/actions";
-import {
-  getQuestionsVercel,
-  // getQuestionsGeminiVercel,
-  // getQuestionsGroqVercel,
-} from "@/lib/actions";
+import { getQuestionsVercel } from "@/lib/actions";
 import Results from "@/components/game/results";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
@@ -27,11 +21,25 @@ function GamePage({ params }) {
   // track # of correct answers for results summary
   const [correctAnswerCounter, setCorrectAnswerCounter] = useState(0);
 
+  // set gemini as default LLM
+  const [selectedLLM, setSelectedLLM] = useState("gemini");
+
   // useActionState to securely retrieve data from server component via server action
   const [quizQuestions, formAction, isPending] = useActionState(
-    getQuestionsVercel.bind(null, gameLevelSlug),
+    getQuestionsVercel.bind(null, gameLevelSlug, selectedLLM.toLowerCase()),
     []
   );
+
+  // select random LLM
+  useEffect(() => {
+    const _ = require("lodash");
+    const LLMOptions = ["Gemini", "Llama", "Deepseek", "Claude"];
+    const shuffledLLMOptions = _.shuffle(LLMOptions);
+    console.log(shuffledLLMOptions);
+    const randomLLM = shuffledLLMOptions[0];
+    console.log(randomLLM);
+    setSelectedLLM(randomLLM);
+  }, []);
 
   // update page state upon questions loading
   useEffect(() => {
@@ -70,12 +78,11 @@ function GamePage({ params }) {
   }
 
   // loading UI for LLM latency
-  // TODO: add name of selected LLM?
   if (gameMode === "loading") {
     return (
       <>
         <p className="text-2xl md:text-4xl mb-12">
-          Preparing Your Bluey Quiz Questions!
+          {selectedLLM + " is Preparing Your Bluey Quiz Questions!"}
         </p>
         <LDRSBouncyAnimationLoader />
       </>
