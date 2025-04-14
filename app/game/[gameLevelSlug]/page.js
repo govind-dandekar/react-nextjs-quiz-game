@@ -6,7 +6,7 @@ import { useEffect, useState, useActionState } from "react";
 // import { getQuestionsDummy } from "@/lib/actions";
 // import { getQuestionsAnthropic } from "@/lib/actions";
 import {
-  getQuestionsClaudeVercel,
+  getQuestionsVercel,
   // getQuestionsGeminiVercel,
   // getQuestionsGroqVercel,
 } from "@/lib/actions";
@@ -29,7 +29,7 @@ function GamePage({ params }) {
 
   // useActionState to securely retrieve data from server component via server action
   const [quizQuestions, formAction, isPending] = useActionState(
-    getQuestionsClaudeVercel.bind(null, gameLevelSlug),
+    getQuestionsVercel.bind(null, gameLevelSlug),
     []
   );
 
@@ -69,12 +69,13 @@ function GamePage({ params }) {
     );
   }
 
-  // loading UI for Claude latency
+  // loading UI for LLM latency
+  // TODO: add name of selected LLM?
   if (gameMode === "loading") {
     return (
       <>
         <p className="text-2xl md:text-4xl mb-12">
-          Claude is Preparing Your Bluey Quiz Questions!
+          Preparing Your Bluey Quiz Questions!
         </p>
         <LDRSBouncyAnimationLoader />
       </>

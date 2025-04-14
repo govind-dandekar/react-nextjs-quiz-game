@@ -4,31 +4,47 @@ import Anthropic from "@anthropic-ai/sdk";
 import { anthropic } from '@ai-sdk/anthropic';
 import { google } from '@ai-sdk/google';
 import { groq } from '@ai-sdk/groq';;
-import { generateObject } from 'ai';
+import { generateObject, LanguageModelV1 } from 'ai';
 import { z } from 'zod';
 
 // import { parseClaudeQuizResponse } from "./util/anthropic-api-parser"
 
 import { DUMMY_QUESTIONS_EASY, DUMMY_QUESTIONS_MEDIUM, DUMMY_QUESTIONS_HARD } from "./dummy-questions";
 
+const aiPromptStart = "please provide an array containing 10 quiz questions related to the kids tv show \"Bluey.\"  each question should have 4 possible answers, one of which is the correct answer.  the correct answer should be labelled as \"true\" and the incorrect answers should be labelled as \"false\".  out of three possible settings of \"easy\", \"medium\" and \"hard\", the user has requested "
+const aiPromptEnd = "questions.  the position of the correct answer should be randomized.\n "
+
+
 
 
 // vercel implementation
-export async function getQuestionsClaudeVercel(level: string){
+export async function getQuestionsVercel(level: string, selectedModel: string){
+  let apiModel: LanguageModelV1 = groq("deepseek-r1-distill-llama-70b");
+
+  if (selectedModel === 'gemini'){
+    apiModel = google("gemini-2.0-flash-001")
+  } else if (selectedModel === 'llama') {
+    apiModel = groq("meta-llama/llama-4-scout-17b-16e-instruct")
+  } else if (selectedModel === 'deepseek'){
+    apiModel = groq("deepseek-r1-distill-llama-70b")
+  } 
+  
+// anthropic("claude-3-5-sonnet-20241022")
+
   try {
     const { object } = await generateObject({
-      model: anthropic("claude-3-5-sonnet-20241022"),
+      model: apiModel,
       schema: z.object({
         questionsArray: z.array(z.object({question: z.string(), answers: z.array(z.object({text: z.string(), correct: z.boolean()}))}))
       }),
-      prompt: "please provide an array containing 10 quiz questions related to the kids tv show \"Bluey.\"  each question should have 4 possible answers, one of which is the correct answer.  the correct answer should be labelled as \"true\" and the incorrect answers should be labelled as \"false\".  out of three possible settings of \"easy\", \"medium\" and \"hard\", the user has requested " + level + "questions.  the position of the correct answer should be randomized.\n "
+      prompt: aiPromptStart + level + aiPromptEnd
     })
 
     return object.questionsArray;
     /* eslint-disable @typescript-eslint/no-explicit-any */
   } catch (error: any) {
-    console.error('Error retrieving data from Claude. Fallback to static dummy questions');
-    console.error("Claude error: "  + error.message );
+    console.error('Error retrieving data from' + selectedModel +  "Fallback to static dummy questions");
+    console.error(selectedModel +  "error: "  + error.message );
     return getQuestionsDummy(level)
   }
 }
