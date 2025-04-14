@@ -38,7 +38,8 @@ function GamePage({ params }) {
     console.log(shuffledLLMOptions);
     const randomLLM = shuffledLLMOptions[0];
     console.log(randomLLM);
-    setSelectedLLM(randomLLM);
+    //setSelectedLLM(randomLLM);
+    setSelectedLLM("Gemini");
   }, []);
 
   // update page state upon questions loading
