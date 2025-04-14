@@ -35,11 +35,8 @@ function GamePage({ params }) {
   useEffect(() => {
     const LLMOptions = ["Gemini", "Llama", "Deepseek", "Claude"];
     const shuffledLLMOptions = _.shuffle(LLMOptions);
-    console.log(shuffledLLMOptions);
     const randomLLM = shuffledLLMOptions[0];
-    console.log(randomLLM);
-    //setSelectedLLM(randomLLM);
-    setSelectedLLM("Gemini");
+    setSelectedLLM(randomLLM);
   }, []);
 
   // update page state upon questions loading
