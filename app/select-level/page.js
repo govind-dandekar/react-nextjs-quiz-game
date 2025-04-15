@@ -2,11 +2,11 @@ import SelectLevelClient from "@/components/client-server/client-components/sele
 import SelectLevelServer from "@/components/client-server/server-components/select-level-server";
 
 function SelectLevelPage() {
+  // move client compnent down component tree
   return (
     <>
-      <SelectLevelClient>
-        <SelectLevelServer />
-      </SelectLevelClient>
+      <SelectLevelServer />
+      <SelectLevelClient />
     </>
   );
 }

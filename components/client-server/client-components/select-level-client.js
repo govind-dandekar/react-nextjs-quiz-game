@@ -12,7 +12,7 @@ import {
   selectedButtonCSS,
 } from "@/components/ui/util/button-css";
 
-export default function SelectLevelClient({ children }) {
+export default function SelectLevelClient() {
   const [selectedLevel, setSelectedLevel] = useState("none");
 
   function levelSelectHandler(levelName) {
@@ -26,7 +26,6 @@ export default function SelectLevelClient({ children }) {
 
   return (
     <>
-      {children}
       <div className="flex space-x-4">
         {levels.map((level) => {
           return (
