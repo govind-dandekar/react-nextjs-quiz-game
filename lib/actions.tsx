@@ -14,6 +14,7 @@ const aiPromptEnd = "questions.  the position of the correct answer should be ra
 
 // vercel implementation
 export async function getQuestionsVercel(level: string, selectedModel: string){
+  "use server"
   let apiModel: LanguageModelV1 = anthropic("claude-3-5-sonnet-20241022");
 
   if (selectedModel === 'gemini'){
