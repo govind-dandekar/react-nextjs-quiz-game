@@ -1,4 +1,4 @@
-import 'server-only';
+"use server"
 import { anthropic } from '@ai-sdk/anthropic';
 import { google } from '@ai-sdk/google';
 import { groq } from '@ai-sdk/groq';;
