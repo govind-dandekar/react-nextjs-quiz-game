@@ -15,6 +15,7 @@ export async function getHighScores() {
 // pass false to ensure caching w/o explicit call to revalidate
 export const getHighScoresCached = nextCache(cache(async function getHighScoresCached(supabase){
 	"use server";
+	console.log('getting high scores')
 	let { data: scoresTable } = await supabase.from("scores_table").select("*");
 	const sortedScores = scoresTable.sort((a, b) => b.score - a.score);
 	return sortedScores;

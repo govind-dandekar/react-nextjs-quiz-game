@@ -1,23 +1,16 @@
 import "server-only";
 
 import SubmitButton from "@/components/ui/submit-button";
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
+
+import { getHighScores } from "@/lib/high-score-actions";
 
 import Link from "next/link";
 
 export default async function ScoreDetail({ params }) {
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
-
   const { id } = await params;
 
-  console.log(id);
-
-  let { data: selectedScore } = await supabase
-    .from("scores_table")
-    .select()
-    .eq("id", +id);
+  const scores = await getHighScores();
+  const selectedScore = scores.filter((score) => +id === score.id);
 
   return (
     <>

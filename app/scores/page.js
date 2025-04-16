@@ -1,7 +1,6 @@
 import "server-only";
 
 import Image from "next/image";
-import Link from "next/link";
 import { Suspense } from "react";
 
 import { getHighScores } from "@/lib/high-score-actions";
@@ -24,9 +23,7 @@ async function ScoreList() {
     return sortedScores.map((score) => {
       return (
         <p className="text-xl md:text-3xl mt-4" key={score.id}>
-          <Link href={`/scores/${score.id}`}>
-            {score.name} {score.score}{" "}
-          </Link>
+          {score.name} {score.score}{" "}
         </p>
       );
     });
