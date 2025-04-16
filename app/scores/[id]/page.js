@@ -1,17 +1,23 @@
-"use client";
+import "server-only";
 
 import SubmitButton from "@/components/ui/submit-button";
+import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 
-import { getScoreID } from "@/lib/high-score-actions";
-import { useParams } from "next/navigation";
 import Link from "next/link";
 
-export default function ScoreDetail() {
-  const params = useParams();
+export default async function ScoreDetail({ params }) {
+  const cookieStore = await cookies();
+  const supabase = createClient(cookieStore);
 
-  const selectedScore = getScoreID(+params.id);
+  const { id } = await params;
 
-  console.log(selectedScore);
+  console.log(id);
+
+  let { data: selectedScore } = await supabase
+    .from("scores_table")
+    .select()
+    .eq("id", +id);
 
   return (
     <>

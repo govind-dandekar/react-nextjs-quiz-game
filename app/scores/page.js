@@ -1,9 +1,8 @@
+import "server-only";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
 
 import { getHighScores } from "@/lib/high-score-actions";
 
@@ -19,34 +18,24 @@ function Fallback() {
 }
 
 async function ScoreList() {
-  const highScores = await getHighScores();
-  // console.log(highScores);
-
-  return highScores.map((score) => {
-    return (
-      <p className="text-xl md:text-3xl mt-4" key={score.id}>
-        <Link href={`/scores/${score.id}`}>
-          {score.name} {score.score}{" "}
-        </Link>
-      </p>
-    );
-  });
-}
-
-export default async function ScoresPage() {
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
-
   try {
-    let { data: scores_table, error } = await supabase
-      .from("scores_table")
-      .select("*");
+    const sortedScores = await getHighScores();
 
-    console.log(scores_table);
+    return sortedScores.map((score) => {
+      return (
+        <p className="text-xl md:text-3xl mt-4" key={score.id}>
+          <Link href={`/scores/${score.id}`}>
+            {score.name} {score.score}{" "}
+          </Link>
+        </p>
+      );
+    });
   } catch (error) {
     console.log("supabase error " + error);
   }
+}
 
+export default async function ScoresPage() {
   return (
     <>
       <Image
