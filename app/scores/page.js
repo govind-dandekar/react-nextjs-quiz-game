@@ -17,19 +17,16 @@ function Fallback() {
 }
 
 async function ScoreList() {
-  try {
-    const sortedScores = await getHighScores();
+  // caching fais when try catch included
+  const sortedScores = await getHighScores();
 
-    return sortedScores.map((score) => {
-      return (
-        <p className="text-xl md:text-3xl mt-4" key={score.id}>
-          {score.name} {score.score}{" "}
-        </p>
-      );
-    });
-  } catch (error) {
-    console.log("supabase error " + error);
-  }
+  return sortedScores.map((score) => {
+    return (
+      <p className="text-xl md:text-3xl mt-4" key={score.id}>
+        {score.name} {score.score}{" "}
+      </p>
+    );
+  });
 }
 
 export default async function ScoresPage() {
@@ -45,7 +42,6 @@ export default async function ScoresPage() {
       <Suspense fallback={<Fallback />}>
         <p className="text-xl md:text-3xl mt-8">Top Scores:</p>
         <ScoreList />
-        <p className="mt-4">click on score to see more detail</p>
       </Suspense>
     </>
   );
