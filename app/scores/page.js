@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Suspense } from "react";
 
 import { getHighScores } from "@/lib/high-score-actions";
@@ -21,7 +22,9 @@ async function ScoreList() {
   return highScores.map((score) => {
     return (
       <p className="text-xl md:text-3xl mt-4" key={score.id}>
-        {score.name} {score.score}{" "}
+        <Link href={`/scores/${score.id}`}>
+          {score.name} {score.score}{" "}
+        </Link>
       </p>
     );
   });
@@ -38,8 +41,9 @@ export default async function ScoresPage() {
         priority
       />
       <Suspense fallback={<Fallback />}>
-        <p className="text-xl md:text-3xl mt-8">Top Scores Today:</p>
+        <p className="text-xl md:text-3xl mt-8">Top Scores:</p>
         <ScoreList />
+        <p className="mt-4">click on score to see more detail</p>
       </Suspense>
     </>
   );

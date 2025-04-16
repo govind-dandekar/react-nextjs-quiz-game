@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-import { redirect } from "next/navigation";
+import Link from "next/link";
 
 import SubmitButton from "@/components/ui/submit-button";
 import SelectButton from "@/components/ui/select-button";
@@ -42,14 +41,13 @@ export default function SelectLevelClient() {
           );
         })}
       </div>
-      <SubmitButton
-        disabled={selectedLevel === "none"}
-        onClick={() => redirect(linkText)}
-      >
-        {selectedLevel === "none"
-          ? "Pick a Level to Get Started!"
-          : `${selectedLevel} Quiz - Click Here!`}
-      </SubmitButton>
+      <Link href={linkText}>
+        <SubmitButton disabled={selectedLevel === "none"}>
+          {selectedLevel === "none"
+            ? "Pick a Level to Get Started!"
+            : `${selectedLevel} Quiz - Click Here!`}
+        </SubmitButton>
+      </Link>
     </>
   );
 }

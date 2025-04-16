@@ -2,19 +2,22 @@ const DUMMY_SCORES = [
 		{
 		 id: 1,
 		 name: 'Muffin',
-		 country: 'Australia',
+		 level: 'Medium',
+		 model: 'Gemini',
 		 score: 2
 		},
 		{
 			id: 2, 
 			name: 'Bandit',
-			country: 'United States',
+			level: 'Easy',
+			model: 'Claude',
 			score: 4
 		},
 		{
 			id: 3,
 			name: 'Lila',
-			country: 'Italy',
+			level: 'Medium',
+			model: 'Deepseek',
 			score: 6
 		}
 ]
@@ -30,5 +33,9 @@ export async function getHighScores(){
 
 	// sort scores from highest to lowest
 	return (DUMMY_SCORES.sort((a,b) => b.score - a.score))
+}
+
+export function getScoreID(id){
+	return (DUMMY_SCORES.filter((score) => score.id === id))
 }
 
