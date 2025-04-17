@@ -9,7 +9,7 @@ function CustomFooter() {
       <Link href="/scores">
         <p className="max-md:hidden">high scores</p>
       </Link>
-      <Link href="https://github.com/govind-dandekar/react-nextjs-quiz-game">
+      <Link href="https://github.com/govind-dandekar/react-nextjs-quiz-game/tree/vercel-demo-features">
         <FaGithub className="scale-150 mt-1" />
       </Link>
       <Link href="/">

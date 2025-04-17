@@ -1,5 +1,6 @@
 import "server-only";
 
+import Link from "next/link";
 import Image from "next/image";
 import { Suspense } from "react";
 
@@ -23,7 +24,9 @@ async function ScoreList() {
   return sortedScores.map((score) => {
     return (
       <p className="text-xl md:text-3xl mt-4" key={score.id}>
-        {score.name} {score.score}{" "}
+        <Link href={`scores/${score.id}`}>
+          {score.name} {score.score}{" "}
+        </Link>
       </p>
     );
   });
@@ -42,6 +45,7 @@ export default async function ScoresPage() {
       <Suspense fallback={<Fallback />}>
         <p className="text-xl md:text-3xl mt-8">Top Scores:</p>
         <ScoreList />
+        <p className="mt-4 text-xl">click on a score to see more detail!</p>
       </Suspense>
     </>
   );
