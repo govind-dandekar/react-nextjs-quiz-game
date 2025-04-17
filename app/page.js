@@ -25,9 +25,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-// return (
-//   <HomePageClient>
-//     <HomePageServer />
-//   </HomePageClient>
-// );

@@ -14,8 +14,8 @@ async function fetchHighScores(supabase) {
   return scoresTable;
 }
 
-// used several Claude prompts (and perplexity and chatGPT and blog posts) for this after several hours 
-// of attempting to get it to work
+// used several Claude prompts (and perplexity and chatGPT and v0 and blog posts)
+// for this after several hours of attempting to get it to work
 export const getHighScores = async () => {
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);

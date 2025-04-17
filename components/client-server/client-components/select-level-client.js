@@ -44,7 +44,7 @@ export default function SelectLevelClient() {
       <Link href={linkText}>
         <SubmitButton disabled={selectedLevel === "none"}>
           {selectedLevel === "none"
-            ? "Pick a Level to Get Started!"
+            ? "Pick a Level!"
             : `${selectedLevel} Quiz - Click Here!`}
         </SubmitButton>
       </Link>
