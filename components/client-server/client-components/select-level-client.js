@@ -10,15 +10,19 @@ import {
   baseButtonCSS,
   selectedButtonCSS,
 } from "@/components/ui/util/button-css";
+import { useParams } from "next/navigation";
 
 export default function SelectLevelClient() {
+  const params = useParams();
+
   const [selectedLevel, setSelectedLevel] = useState("none");
 
   function levelSelectHandler(levelName) {
     setSelectedLevel(levelName);
   }
 
-  const linkText = "/game/" + selectedLevel.toLowerCase();
+  const linkText =
+    "/game/" + params.playerName + "/" + selectedLevel.toLowerCase();
 
   // available game levels
   const levels = ["Easy", "Medium", "Hard"];

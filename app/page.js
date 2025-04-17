@@ -17,7 +17,7 @@ function HomePage() {
         <p>Welcome To...</p>
         <p>The Bluey Quiz Game!!!</p>
       </div>
-      <Link href="/select-level">
+      <Link href="/select-player">
         <SubmitButton>Click Here To Play!</SubmitButton>
       </Link>
     </>

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+
 import Image from "next/image";
+import Link from "next/link";
 
 import SubmitButton from "@/components/ui/submit-button";
 import SelectButton from "@/components/ui/select-button";
@@ -59,7 +60,7 @@ export default function SelectPlayerPage() {
           );
         })}
       </div>
-      <Link href={linkText}>
+      <Link href={`/select-level/${selectedPlayer.toLowerCase()}`}>
         <SubmitButton disabled={selectedPlayer === "none"}>
           {selectedPlayer === "none"
             ? "Pick a Character!!"
