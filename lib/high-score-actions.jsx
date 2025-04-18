@@ -25,7 +25,7 @@ export const getHighScores = async () => {
   const cachedFetchHighScores = nextCache(
     () => fetchHighScores(supabase),
     ['high-scores'],
-    {revalidate: 60}
+    {revalidate: 30}
   );
 
   // Call the cached function and return its result
