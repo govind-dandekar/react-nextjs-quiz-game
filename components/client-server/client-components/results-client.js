@@ -3,8 +3,8 @@ import SubmitButton from "../../ui/submit-button";
 
 export default function ResultsClient({ handleClick }) {
   return (
-    <a href="/scores">
-      <SubmitButton>See High Scores!</SubmitButton>
-    </a>
+    <SubmitButton onClick={handleClick}>
+      <a href="/scores">See High Scores!</a>
+    </SubmitButton>
   );
 }
