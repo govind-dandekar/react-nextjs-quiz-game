@@ -18,8 +18,9 @@ function Fallback() {
 }
 
 async function ScoreList() {
-  // caching fais when try catch included
-  const sortedScores = await getHighScores();
+  const returnedScores = await getHighScores();
+  const sortedScores = returnedScores.sort((a, b) => b.score - a.score);
+  console.log(sortedScores);
 
   return sortedScores.map((score) => {
     return (
