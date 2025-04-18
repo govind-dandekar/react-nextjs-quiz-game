@@ -4,8 +4,8 @@ import * as React from "react";
 import { useEffect, useState, useActionState } from "react";
 
 import { getQuestionsVercel } from "@/lib/actions";
-import Instructions from "../../../components/game/instructions";
-import AnswerGrid from "../../../components/game/answer-grid";
+import Instructions from "../../../../components/game/instructions";
+import AnswerGrid from "../../../../components/game/answer-grid";
 import SubmitButton from "@/components/ui/submit-button";
 import _ from "lodash";
 
@@ -16,8 +16,9 @@ import { useParams } from "next/navigation";
 import LDRSBouncyAnimationLoader from "@/components/ui/ldrs-bouncy-animation-loader";
 
 function GamePage() {
-  const params = useParams();
-  const gameLevelSlug = params.nameAndLevel[1];
+  const { name, level } = useParams();
+
+  const gameLevelSlug = level;
 
   // manage flow of game in PlayGame
   const [gameMode, setGameMode] = useState("instructions");
@@ -112,8 +113,6 @@ function GamePage() {
 
   // game results UI
   if (gameMode === "results") {
-    const name = params.nameAndLevel[0];
-    const level = gameLevelSlug;
     const llm = selectedLLM.toLowerCase();
     const score = correctAnswerCounter;
 
