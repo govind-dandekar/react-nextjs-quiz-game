@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function ResultsClient({ handleClick }) {
   return (
-    <Link prefetch={false}>
+    <Link href="/scores" prefetch={false}>
       <SubmitButton onClick={handleClick}>See High Scores!</SubmitButton>
     </Link>
   );
