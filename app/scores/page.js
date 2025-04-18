@@ -20,7 +20,6 @@ function Fallback() {
 async function ScoreList() {
   const returnedScores = await getHighScores();
   const sortedScores = returnedScores.sort((a, b) => b.score - a.score);
-  console.log(sortedScores);
 
   return sortedScores.map((score) => {
     return (
