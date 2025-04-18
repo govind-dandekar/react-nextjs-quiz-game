@@ -24,8 +24,8 @@ export default function SelectPlayerPage() {
   const playerOptions = [
     { name: "Missy", photoSource: "/missy.png" },
     { name: "Muffin", photoSource: "/muffin.png" },
-    { name: "Snickers", photoSource: "/snickers.png" },
     { name: "Socks", photoSource: "/socks.png" },
+    { name: "Buddy", photoSource: "/buddy.png" },
   ];
 
   return (
