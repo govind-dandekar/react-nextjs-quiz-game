@@ -19,6 +19,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "ai": "^4.2.10",
+    "cookies-next": "^5.1.0",
     "install": "^0.13.0",
     "ldrs": "^1.0.2",
     "lodash": "^4.17.21",

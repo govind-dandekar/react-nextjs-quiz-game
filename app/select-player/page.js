@@ -20,8 +20,6 @@ export default function SelectPlayerPage() {
     setSelectedPLayer(playerName);
   }
 
-  const linkText = "/select-level";
-
   // available players
   const playerOptions = [
     { name: "Missy", photoSource: "/missy.png" },

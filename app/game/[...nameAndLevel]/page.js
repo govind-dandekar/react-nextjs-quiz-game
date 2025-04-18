@@ -4,17 +4,22 @@ import * as React from "react";
 import { useEffect, useState, useActionState } from "react";
 
 import { getQuestionsVercel } from "@/lib/actions";
-import Results from "@/components/game/results";
 import Instructions from "../../../components/game/instructions";
 import AnswerGrid from "../../../components/game/answer-grid";
 import SubmitButton from "@/components/ui/submit-button";
 import _ from "lodash";
 
+import { useRouter } from "next/navigation";
+
+import { useParams } from "next/navigation";
+
 import LDRSBouncyAnimationLoader from "@/components/ui/ldrs-bouncy-animation-loader";
 
-function GamePage({ params }) {
-  const { gameLevelSlug } = React.use(params);
+function GamePage() {
+  // TODO: UPDATE THIS AND GET LEVEL
+  const params = useParams();
 
+  const gameLevelSlug = "medium";
   // manage flow of game in PlayGame
   const [gameMode, setGameMode] = useState("instructions");
   // track current question
@@ -30,6 +35,8 @@ function GamePage({ params }) {
     getQuestionsVercel.bind(null, gameLevelSlug, selectedLLM.toLowerCase()),
     []
   );
+
+  const router = useRouter();
 
   // select random LLM
   useEffect(() => {
@@ -106,7 +113,14 @@ function GamePage({ params }) {
 
   // game results UI
   if (gameMode === "results") {
-    return <Results correctAnswerCounter={correctAnswerCounter} />;
+    const name = params.nameAndLevel[0];
+    const level = params.nameAndLevel[1];
+    const llm = selectedLLM.toLowerCase();
+    const score = correctAnswerCounter;
+
+    router.push(
+      `/results?name=${name}&level=${level}&llm=${llm}&score=${score}`
+    );
   }
 }
 
