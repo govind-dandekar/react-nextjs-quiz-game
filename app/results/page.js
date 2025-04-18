@@ -5,6 +5,7 @@ import { addHighScore } from "@/lib/high-score-actions";
 import ResultsClient from "@/components/client-server/client-components/results-client";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function Results({ searchParams }) {
   const { name, level, llm, score } = await searchParams;
