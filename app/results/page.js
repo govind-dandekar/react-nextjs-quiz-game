@@ -14,8 +14,6 @@ export default async function Results({ searchParams }) {
   console.log(llm);
   console.log(score);
 
-  await addHighScore(name, score, level, llm);
-
   let resultsIndex;
 
   if (score < 4) {
@@ -29,6 +27,7 @@ export default async function Results({ searchParams }) {
   async function handleClick() {
     "use server";
     revalidatePath("/scores");
+    await addHighScore(name, score, level, llm);
   }
 
   return (
