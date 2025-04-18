@@ -7,13 +7,10 @@ import ResultsClient from "@/components/client-server/client-components/results-
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import _ from "lodash";
+
 export default async function Results({ searchParams }) {
   const { name, level, llm, score } = await searchParams;
-
-  console.log(name);
-  console.log(level);
-  console.log(llm);
-  console.log(score);
 
   let resultsIndex;
 
@@ -25,10 +22,14 @@ export default async function Results({ searchParams }) {
     resultsIndex = 2;
   }
 
+  const updatedName = _.capitalize(name);
+  const updatedLevel = _.capitalize(level);
+  const updatedLLM = _.capitalize(llm);
+
   async function handleClick() {
     "use server";
     revalidatePath("/scores");
-    await addHighScore(name, score, level, llm);
+    await addHighScore(updatedName, score, updatedLevel, updatedLLM);
     redirect("/scores");
   }
 

@@ -16,10 +16,9 @@ import { useParams } from "next/navigation";
 import LDRSBouncyAnimationLoader from "@/components/ui/ldrs-bouncy-animation-loader";
 
 function GamePage() {
-  // TODO: UPDATE THIS AND GET LEVEL
   const params = useParams();
+  const gameLevelSlug = params.nameAndLevel[1];
 
-  const gameLevelSlug = "medium";
   // manage flow of game in PlayGame
   const [gameMode, setGameMode] = useState("instructions");
   // track current question
@@ -114,7 +113,7 @@ function GamePage() {
   // game results UI
   if (gameMode === "results") {
     const name = params.nameAndLevel[0];
-    const level = params.nameAndLevel[1];
+    const level = gameLevelSlug;
     const llm = selectedLLM.toLowerCase();
     const score = correctAnswerCounter;
 
