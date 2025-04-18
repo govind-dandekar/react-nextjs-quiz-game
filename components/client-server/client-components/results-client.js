@@ -1,10 +1,11 @@
 "use client";
 import SubmitButton from "../../ui/submit-button";
+import Link from "next/link";
 
 export default function ResultsClient({ handleClick }) {
   return (
-    <SubmitButton onClick={handleClick}>
-      <a href="/scores">See High Scores!</a>
-    </SubmitButton>
+    <Link prefetch={false}>
+      <SubmitButton onClick={handleClick}>See High Scores!</SubmitButton>
+    </Link>
   );
 }
