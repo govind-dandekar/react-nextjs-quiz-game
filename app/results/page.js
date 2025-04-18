@@ -28,6 +28,7 @@ export default async function Results({ searchParams }) {
     "use server";
     revalidatePath("/scores");
     await addHighScore(name, score, level, llm);
+    redirect("/scores");
   }
 
   return (
