@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Page() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  // const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(
     `https://react-nextjs-quiz-game.vercel.app//api/characters`
   );

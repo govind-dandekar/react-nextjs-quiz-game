@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export async function generateStaticParams() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  //const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(
     `https://react-nextjs-quiz-game.vercel.app/api/characters`
   );
@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
 export default async function CharacterPage({ params }) {
   const { characterId } = await params;
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  // const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(
     `https://react-nextjs-quiz-game.vercel.app/api/characters`
   );
