@@ -11,8 +11,9 @@ export async function generateStaticParams() {
 }
 
 export default async function CharacterPage({ params }) {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const { characterId } = await params;
-  const res = await fetch(`http://localhost:3000/api/characters`);
+  const res = await fetch(`${apiUrl}/api/characters`);
   const characters = await res.json();
 
   const selectedCharacter = characters.filter(
