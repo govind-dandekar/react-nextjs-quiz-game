@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/util/button-css";
 
 export default function SelectPlayerClient() {
+  console.log(process.env.VERCEL_URL);
+
   const [selectedPlayer, setSelectedPLayer] = useState("none");
 
   function playerSelectHandler(playerName) {

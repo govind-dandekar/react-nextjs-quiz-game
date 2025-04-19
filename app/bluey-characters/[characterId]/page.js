@@ -36,8 +36,6 @@ export default async function CharacterPage({ params }) {
     (character) => character.id === +characterId
   );
 
-  console.log(selectedCharacter);
-
   return (
     <>
       <Image

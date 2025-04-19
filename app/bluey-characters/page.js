@@ -19,8 +19,6 @@ export default async function Page() {
 
   const characters = await res.json();
 
-  console.log(characters);
-
   return (
     <>
       <ul className="grid grid-cols-4 gap-8">
