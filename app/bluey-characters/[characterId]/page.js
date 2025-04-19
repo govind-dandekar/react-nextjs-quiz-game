@@ -1,10 +1,8 @@
 import Image from "next/image";
 
 export async function generateStaticParams() {
-  //const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(
-    `https://react-nextjs-quiz-game.vercel.app/api/characters`
-  );
+  const apiUrl = process.env.BACKEND_URL;
+  const res = await fetch(`${apiUrl}/api/characters`);
   const characters = await res.json();
 
   return characters.map((characters) => ({
@@ -14,10 +12,8 @@ export async function generateStaticParams() {
 
 export default async function CharacterPage({ params }) {
   const { characterId } = await params;
-  // const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(
-    `https://react-nextjs-quiz-game.vercel.app/api/characters`
-  );
+  const apiUrl = process.env.BACKEND_URL;
+  const res = await fetch(`${apiUrl}/api/characters`);
   const characters = await res.json();
 
   const selectedCharacter = characters.filter(
