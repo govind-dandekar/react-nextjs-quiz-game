@@ -1,19 +1,30 @@
 "use server";
 
-import { headers } from "next/headers";
+import Image from "next/image";
+import Link from "next/link";
 
 export default async function Page() {
-  const host = headers().get("host");
-  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-  const res = await fetch(`${protocol}://${host}/api/characters`);
-  const posts = await res.json();
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${apiUrl}/api/characters`);
+  const characters = await res.json();
 
-  console.log(posts);
   return (
-    <ul>
-      {posts.map((post) => (
-        <li key={post.id}>{post.name}</li>
-      ))}
-    </ul>
+    <>
+      <ul className="grid grid-cols-4 gap-8">
+        {characters.map((character) => (
+          <li key={character.id}>
+            <Link href={`bluey-characters/${character.id}`}>
+              <Image
+                src={character.photoSource}
+                alt={character.name}
+                height={200}
+                width={100}
+              />
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-12 text-3xl">Click on a Character to Learn More!</p>
+    </>
   );
 }
