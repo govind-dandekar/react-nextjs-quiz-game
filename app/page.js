@@ -4,6 +4,8 @@ import Link from "next/link";
 import SubmitButton from "@/components/ui/submit-button";
 
 function HomePage() {
+  console.log(process.env.VERCEL_URL);
+
   return (
     <>
       <Image

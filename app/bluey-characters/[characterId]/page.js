@@ -1,11 +1,16 @@
 import Image from "next/image";
 
 export async function generateStaticParams() {
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3001";
+  // const baseUrl = process.env.VERCEL_URL
+  //   ? `https://${process.env.VERCEL_URL}`
+  //   : "http://localhost:3000";
 
-  const res = await fetch(`${baseUrl}/api/characters`);
+  const testUrl =
+    process.env.VERCEL_ENV === "production"
+      ? "https://react-nextjs-quiz-game.vercel.app"
+      : "http://localhost:3000";
+
+  const res = await fetch(`${testUrl}/api/characters`);
   const characters = await res.json();
 
   return characters.map((characters) => ({
@@ -15,11 +20,16 @@ export async function generateStaticParams() {
 
 export default async function CharacterPage({ params }) {
   const { characterId } = await params;
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3001";
+  // const baseUrl = process.env.VERCEL_URL
+  //   ? `https://${process.env.VERCEL_URL}`
+  //   : "http://localhost:3000";
 
-  const res = await fetch(`${baseUrl}/api/characters`);
+  const testUrl =
+    process.env.VERCEL_ENV === "production"
+      ? "https://react-nextjs-quiz-game.vercel.app"
+      : "http://localhost:3000";
+
+  const res = await fetch(`${testUrl}/api/characters`);
   const characters = await res.json();
 
   const selectedCharacter = characters.filter(
