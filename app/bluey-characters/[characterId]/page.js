@@ -24,10 +24,10 @@ export default async function CharacterPage({ params }) {
   //   ? `https://${process.env.VERCEL_URL}`
   //   : "http://localhost:3000";
 
-  const testUrl =
-    process.env.VERCEL_ENV === "production"
-      ? "https://react-nextjs-quiz-game.vercel.app"
-      : "http://localhost:3000";
+  // const testUrl =
+  //   process.env.VERCEL_ENV === "production"
+  //     ? "https://react-nextjs-quiz-game.vercel.app"
+  //     : "http://localhost:3000";
 
   const res = await fetch("https://bluey-api.vercel.app/api/bluey");
   const characters = await res.json();
