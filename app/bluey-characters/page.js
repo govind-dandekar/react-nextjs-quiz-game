@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Page() {
-  const apiUrl = process.env.BACKEND_URL;
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
   const res = await fetch(`${apiUrl}/api/characters`);
   const characters = await res.json();
 
