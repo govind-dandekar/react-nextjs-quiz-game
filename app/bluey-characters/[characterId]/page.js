@@ -10,7 +10,10 @@ export async function generateStaticParams() {
   //     ? "https://react-nextjs-quiz-game.vercel.app"
   //     : "http://localhost:3000";
 
-  const res = await fetch("https://bluey-api.vercel.app/api/bluey");
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/characters`
+  );
+  // const res = await fetch("https://bluey-api.vercel.app/api/bluey");
   const characters = await res.json();
 
   return characters.map((characters) => ({
@@ -20,6 +23,9 @@ export async function generateStaticParams() {
 
 export default async function CharacterPage({ params }) {
   const { characterId } = await params;
+
+  // const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+
   // const baseUrl = process.env.VERCEL_URL
   //   ? `https://${process.env.VERCEL_URL}`
   //   : "http://localhost:3000";
@@ -29,7 +35,10 @@ export default async function CharacterPage({ params }) {
   //     ? "https://react-nextjs-quiz-game.vercel.app"
   //     : "http://localhost:3000";
 
-  const res = await fetch("https://bluey-api.vercel.app/api/bluey");
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/characters`
+  );
+  // const res = await fetch("https://bluey-api.vercel.app/api/bluey");
   const characters = await res.json();
 
   const selectedCharacter = characters.filter(

@@ -4,7 +4,7 @@ import Link from "next/link";
 import SubmitButton from "@/components/ui/submit-button";
 
 function HomePage() {
-  console.log(process.env.VERCEL_URL);
+  console.log("vercel environment var:" + process.env.NEXT_PUBLIC_API_URL);
 
   return (
     <>
