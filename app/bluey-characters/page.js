@@ -4,20 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Page() {
-  console.log("vercel url " + process.env.NEXT_PUBLIC_VERCEL_URL);
-
-  // const baseUrl = process.env.VERCEL_URL
-  //   ? `https://${process.env.VERCEL_URL}`
-  //   : "http://localhost:3000/";
-
-  // const testUrl =
-  //   process.env.VERCEL_ENV === "production"
-  //     ? "https://react-nextjs-quiz-game.vercel.app"
-  //     : "http://localhost:3000";
-
-  // const res = await fetch("https://bluey-api.vercel.app/api/bluey");
-  // const res = await fetch("https://bluey-api.vercel.app/api/bluey");
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/characters`
   );
