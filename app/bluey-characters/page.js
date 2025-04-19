@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Page() {
-  const apiUrl = process.env.VERCEL_URL || "http://localhost:3001";
-  const res = await fetch(`${apiUrl}/api/characters`);
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3001";
+
+  const res = await fetch(`${baseUrl}/api/characters`);
   const characters = await res.json();
 
   console.log(characters);

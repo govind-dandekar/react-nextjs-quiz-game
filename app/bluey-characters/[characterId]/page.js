@@ -1,8 +1,11 @@
 import Image from "next/image";
 
 export async function generateStaticParams() {
-  const apiUrl = process.env.VERCEL_URL || "http://localhost:3001";
-  const res = await fetch(`${apiUrl}/api/characters`);
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3001";
+
+  const res = await fetch(`${baseUrl}/api/characters`);
   const characters = await res.json();
 
   return characters.map((characters) => ({
@@ -12,8 +15,11 @@ export async function generateStaticParams() {
 
 export default async function CharacterPage({ params }) {
   const { characterId } = await params;
-  const apiUrl = process.env.VERCEL_URL || "http://localhost:3001";
-  const res = await fetch(`${apiUrl}/api/characters`);
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3001";
+
+  const res = await fetch(`${baseUrl}/api/characters`);
   const characters = await res.json();
 
   const selectedCharacter = characters.filter(
