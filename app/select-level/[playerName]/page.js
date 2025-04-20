@@ -13,6 +13,8 @@ export async function generateStaticParams() {
 
 async function SelectLevelPage({ params }) {
   const { playerName } = await params;
+  console.log(playerName);
+
   return (
     <>
       <Image
