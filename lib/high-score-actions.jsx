@@ -17,7 +17,8 @@ async function fetchHighScores(supabase) {
 // used several Claude prompts (and perplexity and chatGPT and v0 and blog posts)
 // for this after several hours of attempting to get it to work
 export const getHighScores = async () => {
-	const cookieStore = await cookies();
+	"use server"
+  const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
   // Use the cached function or create it if it doesn't exist yet

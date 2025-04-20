@@ -7,7 +7,6 @@ export async function GET() {
   const supabase = createClient(cookieStore);
 
   let { data } = await supabase.from("reviews_table").select("*");
-  console.log("data " + data[0]);
 
   // console.log(data);
   return new Response(JSON.stringify(data), {

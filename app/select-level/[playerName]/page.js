@@ -2,8 +2,17 @@ import Image from "next/image";
 
 import SelectLevelClient from "@/components/client-server/client-components/select-level-client";
 
-function SelectLevelPage() {
-  // move client component down component tree
+export async function generateStaticParams() {
+  return [
+    { playerName: "missy" },
+    { playerName: "muffin" },
+    { playerName: "socks" },
+    { playerName: "buddy" },
+  ];
+}
+
+async function SelectLevelPage({ params }) {
+  const { playerName } = await params;
   return (
     <>
       <Image
