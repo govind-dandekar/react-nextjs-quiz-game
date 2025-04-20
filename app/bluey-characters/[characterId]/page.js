@@ -19,11 +19,12 @@ export default async function CharacterPage({ params }) {
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/characters`
   );
 
-  const characters = await res.json();
-
-  const selectedCharacter = characters.filter(
-    (character) => character.id === +characterId
+  const characterRes = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/characters/${characterId}`
   );
+
+  const selectedCharacter = await characterRes.json();
+  console.log(selectedCharacter);
 
   return (
     <>
