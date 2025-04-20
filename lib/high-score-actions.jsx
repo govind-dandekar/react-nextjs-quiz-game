@@ -1,7 +1,6 @@
 import { unstable_cache as nextCache } from "next/cache";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
-import { revalidatePath } from "next/cache";
 
 async function fetchHighScores(supabase) {
   await new Promise((resolve) => {
@@ -51,19 +50,3 @@ export const addHighScore = async (playerName, correctAnswerCounter, selectedLev
 
 	return (data);
 }
-
-// old code:
-// const cookieStore = await cookies();
-// const supabase = createClient(cookieStore);
-
-// async function fetchHighScores(){	
-// 	console.log('fetching data')
-// 	let { data: scoresTable } = await supabase.from("scores_table").select("*");
-// 	return scoresTable;
-// }
-
-// export const getHighScores = nextCache(
-// 	fetchHighScores,
-// 	['high-scores'],
-// 	{revalidate: false}
-// )
