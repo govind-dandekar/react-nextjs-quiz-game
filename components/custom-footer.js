@@ -19,6 +19,9 @@ function CustomFooter() {
       <Link href={"/bluey-characters"}>
         <p>bluey characters</p>
       </Link>
+      <Link href="/game-reviews">
+        <p>game reviews</p>
+      </Link>
       <CustomFooterClient handleClick={scoresRedirect} />
       <Link href="https://github.com/govind-dandekar/react-nextjs-quiz-game/tree/vercel-demo-features">
         <FaGithub className="scale-150 mt-1" />
