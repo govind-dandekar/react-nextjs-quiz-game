@@ -15,11 +15,15 @@ export async function generateStaticParams() {
 export default async function CharacterPage({ params }) {
   const { characterId } = await params;
 
-  const characterRes = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/characters/${characterId}`
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/characters`
   );
 
-  const selectedCharacter = await characterRes.json();
+  const characters = await res.json();
+
+  const selectedCharacter = characters.filter(
+    (character) => character.id === +characterId
+  );
 
   return (
     <>
