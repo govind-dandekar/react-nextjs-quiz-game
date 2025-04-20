@@ -2,7 +2,7 @@ import ReviewsClient from "@/components/client-server/client-components/reviews-
 
 import { addReview } from "@/lib/review-action";
 
-export const revalidate = 60;
+export const revalidate = 10;
 
 export default async function Page() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/reviews`);
