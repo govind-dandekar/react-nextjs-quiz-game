@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/util/button-css";
 import { useParams } from "next/navigation";
 
-export default function SelectLevelClient() {
+export default function SelectLevelClient({ params }) {
   const params = useParams();
 
   const [selectedLevel, setSelectedLevel] = useState("none");
