@@ -1,8 +1,6 @@
 import SelectPlayerClient from "@/components/client-server/client-components/select-player-client";
 
 export default function SelectPlayerPage() {
-  console.log(process.env.VERCEL_URL);
-
   return (
     <>
       <div className="text-3xl text-center mt-8 md:text-6xl">
