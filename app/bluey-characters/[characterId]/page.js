@@ -15,22 +15,6 @@ export async function generateStaticParams() {
 export default async function CharacterPage({ params }) {
   const { characterId } = await params;
 
-  console.log(characterId);
-
-  // const res = await fetch(
-  //   `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/characters/`
-  // );
-
-  // const characters = await res.json();
-
-  // const selectedCharacter = characters.filter(
-  //   (character) => character.id === +characterId
-  // );
-
-  console.log(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/characters/${characterId}`
-  );
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/characters/${characterId}`
   );
