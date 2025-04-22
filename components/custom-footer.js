@@ -10,7 +10,7 @@ import { redirect } from "next/navigation";
 function CustomFooter() {
   async function scoresRedirect() {
     "use server";
-    revalidatePath("scores");
+    revalidatePath("/scores");
     redirect("/scores");
   }
 
