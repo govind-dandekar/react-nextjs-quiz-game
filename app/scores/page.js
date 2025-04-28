@@ -10,7 +10,7 @@ function Fallback() {
   return (
     <div className="space-y-4  mt-8 text-xl md:text-3xl text-wrap">
       <p>
-        Bluey & Bingo are retreiving the high scores (but are eating ice cream
+        Bluey & Bingo are retrieving the high scores (but are eating ice cream
         first)!
       </p>
     </div>
