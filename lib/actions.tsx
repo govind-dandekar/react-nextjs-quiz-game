@@ -1,6 +1,4 @@
 "use server"
-import { anthropic } from '@ai-sdk/anthropic';
-import { google } from '@ai-sdk/google';
 import { groq } from '@ai-sdk/groq';;
 import { generateObject, LanguageModelV1 } from 'ai';
 import { z } from 'zod';
