@@ -19,9 +19,9 @@ function CustomFooter() {
       <Link href={"/bluey-characters"} className="max-md:hidden">
         <p>bluey characters</p>
       </Link>
-      <Link href="/game-reviews" className="max-md:hidden">
+      {/* <Link href="/game-reviews" className="max-md:hidden">
         <p>game reviews</p>
-      </Link>
+      </Link> */}
       <CustomFooterClient handleClick={scoresRedirect} />
       <Link href="https://github.com/govind-dandekar/react-nextjs-quiz-game/">
         <FaGithub className="scale-150 mt-1" />
