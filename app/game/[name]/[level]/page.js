@@ -27,8 +27,8 @@ function GamePage() {
   // track # of correct answers for results summary
   const [correctAnswerCounter, setCorrectAnswerCounter] = useState(0);
 
-  // set gemini as default LLM
-  const [selectedLLM, setSelectedLLM] = useState("gemini");
+  // set gemma as default LLM
+  const [selectedLLM, setSelectedLLM] = useState("gemma");
 
   // useActionState to securely retrieve data from server component via server action
   const [quizQuestions, formAction, isPending] = useActionState(
@@ -40,7 +40,7 @@ function GamePage() {
 
   // select random LLM
   useEffect(() => {
-    const LLMOptions = ["Gemini", "Llama", "Deepseek", "Claude"];
+    const LLMOptions = ["Gemma", "Llama", "Deepseek", "Qwen"];
     const shuffledLLMOptions = _.shuffle(LLMOptions);
     const randomLLM = shuffledLLMOptions[0];
     setSelectedLLM(randomLLM);

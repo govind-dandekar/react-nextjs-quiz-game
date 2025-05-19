@@ -15,10 +15,10 @@ const aiPromptEnd = "questions.  the position of the correct answer should be ra
 // vercel implementation
 export async function getQuestionsVercel(level: string, selectedModel: string){
   "use server"
-  let apiModel: LanguageModelV1 = anthropic("claude-3-5-sonnet-20241022");
+  let apiModel: LanguageModelV1 = groq("gemma2-9b-it");
 
-  if (selectedModel === 'gemini'){
-    apiModel = google("gemini-2.0-flash-001")
+  if (selectedModel === 'qwen'){
+    apiModel = groq("qwen-qwq-32b")
   } else if (selectedModel === 'llama') {
     apiModel = groq("meta-llama/llama-4-scout-17b-16e-instruct")
   } else if (selectedModel === 'deepseek'){
