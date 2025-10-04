@@ -40,7 +40,7 @@ function GamePage() {
 
   // select random LLM
   useEffect(() => {
-    const LLMOptions = ["Gemma", "Llama", "Deepseek", "Qwen"];
+    const LLMOptions = ["Gemma", "Deepseek", "Qwen"];
     const shuffledLLMOptions = _.shuffle(LLMOptions);
     const randomLLM = shuffledLLMOptions[0];
     setSelectedLLM(randomLLM);
