@@ -17,7 +17,7 @@ export async function getQuestionsVercel(level: string, selectedModel: string){
 
   if (selectedModel === 'qwen'){
     apiModel = groq("qwen/qwen3-32b")
-  } else if (selectedModel === 'llama') {
+  } else if (selectedModel === 'llama33') {
     apiModel = groq("llama-3.3-70b-versatile")
   } else if (selectedModel === 'llama4'){
     apiModel = groq("meta-llama/llama-4-scout-17b-16e-instruct")
