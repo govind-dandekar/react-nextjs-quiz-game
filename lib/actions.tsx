@@ -13,7 +13,12 @@ const aiPromptEnd = "questions.  the position of the correct answer should be ra
 // vercel implementation
 export async function getQuestionsVercel(level: string, selectedModel: string){
   "use server"
+  console.log(selectedModel);
+  
+  
   let apiModel: LanguageModelV1 = groq("llama-3.1-8b-instant");
+
+
 
   if (selectedModel === 'qwen'){
     apiModel = groq("qwen/qwen3-32b")
